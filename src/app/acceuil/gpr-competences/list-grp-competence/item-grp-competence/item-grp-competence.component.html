@@ -1,0 +1,11 @@
+<div class="card col-6 m-auto text-center">
+  <div class="card-header bg-dark text-light">{{gc.libelle}}
+    <a  [routerLink]="['/home','edit-grp-competence']"><i class="fa fa-edit"></i></a>
+    <a href=""><i class="fa fa-trash"></i></a>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{gc.description}}</h5>
+    <div class="card-footer text-muted">{{gc.competence}}</div>
+  </div>
+  <div class="card-footer text-muted">{{gc.tag}}</div>
+</div>

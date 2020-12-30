@@ -1,0 +1,42 @@
+<form class="row col-6 m-auto p-4">
+  <div class="col-8 float-right">
+    <div class="col-lg-10 p-4">
+      <input type="text" class="form-control" placeholder="First name">
+    </div>
+    <div class="col-lg-10 p-4">
+      <input type="text" class="form-control" placeholder="Last name">
+    </div>
+    <div class="col-lg-10 p-4">
+      <label for="exampleFormControlSelect1">Profil</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>Profil</option>
+        <option>Apprenant</option>
+        <option>Formateur</option>
+        <option>Cm</option>
+        <option>Admin</option>
+      </select>
+    </div>
+    <div class="col-lg-10 p-4">
+      <label>Email</label>
+      <input type="email" class="form-control" placeholder="email@example.com">
+    </div>
+
+    <div class="col-lg-10 p-4">
+      <label>Password</label>
+      <input type="password" class="form-control" placeholder="Password">
+    </div>
+    <div class="col-lg-10 p-4">
+      <label>Pass Config</label>
+      <input type="password" class="form-control" placeholder="PassConfig">
+    </div>
+    <div class="custom-file col-lg-10">
+      <input type="file"  id="customFileLang" >
+      <label class="custom-file-label" for="customFileLang">Select file</label>
+    </div>
+  </div>
+  <div class="col-4 p-5 float-left">
+    <img src="./assets/images/SALogo.png" class="profile_image" alt="">
+    <h4 style="text-align: center">Koroboto</h4>
+  </div>
+  <button type="button" id="submit" [routerLink]="['/home','list-users']" class="btn btn-info p-3">Update un User</button>
+</form>

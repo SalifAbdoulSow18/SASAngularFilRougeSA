@@ -1,0 +1,50 @@
+<h1 class="text-center">La liste de mes Promo</h1>
+<hr>
+<div class="row">
+  <div class="col-sm-7 m-auto">
+    <a [routerLink]="['/home','add-promo']"><i class="fa fa-user-plus fa-3x"></i></a>
+    <table class="table table-info">
+      <thead>
+      <tr class="bg-dark text-center" style="color: white">
+        <th scope="col">Id</th>
+        <th scope="col">libelle</th>
+        <th scope="col">status</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="text-center">
+        <th scope="row">1</th>
+        <td>Promo 1</td>
+        <td>Désactivé</td>
+        <td>
+          <a class="btn btn-outline-info">Details</a>
+          <a class="btn btn-outline-warning" [routerLink]="['/home','edit-profil']">Edit</a>
+          <a  class="btn btn-outline-danger">Delete</a>
+        </td>
+      </tr>
+      <tr class="text-center">
+        <th scope="row">2</th>
+        <td>Promo 2</td>
+        <td>Désactivé</td>
+        <td>
+          <a class="btn btn-outline-info">Details</a>
+          <a class="btn btn-outline-warning" [routerLink]="['/home','edit-promo']">Edit</a>
+          <a  class="btn btn-outline-danger">Delete</a>
+        </td>
+      </tr>
+      <tr class="text-center">
+        <th scope="row">3</th>
+        <td>Promo 3</td>
+        <td>Activé</td>
+        <td>
+          <a class="btn btn-outline-info">Details</a>
+          <a class="btn btn-outline-warning" [routerLink]="['/home','edit-promo']">Edit</a>
+          <a  class="btn btn-outline-danger">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

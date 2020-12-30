@@ -1,0 +1,13 @@
+.niveau {
+  width: 100%;
+  border: 1px solid black;
+}
+.btn {
+  width: 25%;
+  left: 10px;
+  margin-left: 5px;
+}
+#submit {
+  width: 50%;
+  margin-left: 30%;
+}

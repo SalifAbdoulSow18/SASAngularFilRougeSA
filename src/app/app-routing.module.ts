@@ -1,7 +1,67 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {LoginComponent} from './login/login.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {AcceuilComponent} from './acceuil/acceuil.component';
+import {ListUsersComponent} from './acceuil/users/list-users/list-users.component';
+import {ListProfilComponent} from './acceuil/profils/list-profil/list-profil.component';
+import {ListProfilSortieComponent} from './acceuil/profilSortie/list-profil-sortie/list-profil-sortie.component';
+import {AddUserComponent} from './acceuil/users/add-user/add-user.component';
+import {EditUserComponent} from './acceuil/users/edit-user/edit-user.component';
+import {AddProfilComponent} from './acceuil/profils/add-profil/add-profil.component';
+import {EditProfilComponent} from './acceuil/profils/edit-profil/edit-profil.component';
+import {AddProfilSortieComponent} from './acceuil/profilSortie/add-profil-sortie/add-profil-sortie.component';
+import {EditProfilSortieComponent} from './acceuil/profilSortie/edit-profil-sortie/edit-profil-sortie.component';
+import {ListPromoComponent} from './acceuil/promos/list-promo/list-promo.component';
+import {AddPromoComponent} from './acceuil/promos/add-promo/add-promo.component';
+import {EditPromoComponent} from './acceuil/promos/edit-promo/edit-promo.component';
+import {ListReferentielComponent} from './acceuil/referentiels/list-referentiel/list-referentiel.component';
+import {AddReferentielComponent} from './acceuil/referentiels/add-referentiel/add-referentiel.component';
+import {EditReferentielComponent} from './acceuil/referentiels/edit-referentiel/edit-referentiel.component';
+import {ListCompetenceComponent} from './acceuil/competences/list-competence/list-competence.component';
+import {AddCompetenceComponent} from './acceuil/competences/add-competence/add-competence.component';
+import {EditCompetenceComponent} from './acceuil/competences/edit-competence/edit-competence.component';
+import {ListGrpCompetenceComponent} from './acceuil/gpr-competences/list-grp-competence/list-grp-competence.component';
+import {AddGrpCompetenceComponent} from './acceuil/gpr-competences/add-grp-competence/add-grp-competence.component';
+import {EditGrpCompetenceComponent} from './acceuil/gpr-competences/edit-grp-competence/edit-grp-competence.component';
+import {FormateurComponent} from './formateur/formateur.component';
+import {ApprenantComponent} from './apprenant/apprenant.component';
+import {CmComponent} from './cm/cm.component';
+import {VerificationGuard} from './verification.guard';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent },
+  { path: 'formateur', component: FormateurComponent },
+  { path: 'apprenant', component: ApprenantComponent },
+  { path: 'cm', component: CmComponent },
+  { path: 'home', component: AcceuilComponent, canActivate: [VerificationGuard], children: [
+      { path: 'list-users', component: ListUsersComponent },
+      { path: 'add-user', component: AddUserComponent },
+      { path: 'edit-user', component: EditUserComponent },
+      { path: 'list-profils', component: ListProfilComponent },
+      { path: 'add-profil', component: AddProfilComponent },
+      { path: 'edit-profil', component: EditProfilComponent },
+      { path: 'list-profilSortie', component: ListProfilSortieComponent },
+      { path: 'add-profil-sortie', component: AddProfilSortieComponent },
+      { path: 'edit-profil-sortie', component: EditProfilSortieComponent },
+      { path: 'list-promos', component: ListPromoComponent },
+      { path: 'add-promo', component: AddPromoComponent },
+      { path: 'edit-promo', component: EditPromoComponent },
+      { path: 'list-referentiels', component: ListReferentielComponent },
+      { path: 'add-referentiel', component: AddReferentielComponent },
+      { path: 'edit-referentiel', component: EditReferentielComponent },
+      { path: 'list-competences', component: ListCompetenceComponent },
+      { path: 'add-competence', component: AddCompetenceComponent },
+      { path: 'edit-competence', component: EditCompetenceComponent },
+      { path: 'list-grp-competences', component: ListGrpCompetenceComponent },
+      { path: 'add-grp-competence', component: AddGrpCompetenceComponent },
+      { path: 'edit-grp-competence', component: EditGrpCompetenceComponent },
+    ]
+  },
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/not-found' },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

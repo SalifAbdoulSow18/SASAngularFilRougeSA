@@ -1,0 +1,80 @@
+<h1 class="text-center">La liste de mes utilisateurs</h1>
+<hr>
+<div class="row">
+  <div class="col-sm m-auto">
+    <a [routerLink]="['/home','add-user']"><i class="fa fa-user-plus fa-3x"></i></a>
+    <table class="table table-info">
+      <thead>
+      <tr class="bg-dark text-center" style="color: white">
+        <th scope="col">Photo</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Profil</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let user of users">
+      <tr class="text-center">
+        <th scope="row">
+          <img src="data:image/jpeg;base64,{{user.photo}}" alt="">
+        </th>
+        <td>{{user.prenom}}</td>
+        <td>{{user.nom}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.profil.libelle}}</td>
+        <td>
+          <a class="btn btn-outline-info mr-2">Details</a>
+          <a class="btn btn-outline-warning mr-2" [routerLink]="['/home','edit-user']">Edit</a>
+          <a  class="btn btn-outline-danger">Delete</a>
+        </td>
+      </tr>
+      <!--<tr class="text-center">
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>Koroyay@gmail.com</td>
+        <td>00737245568</td>
+        <td>Formateur</td>
+        <td>
+          <a class="btn btn-outline-info">Details</a>
+          <a class="btn btn-outline-warning" [routerLink]="['/home','edit-user']">Edit</a>
+          <a  class="btn btn-outline-danger">Delete</a>
+        </td>
+      </tr>
+      <tr class="text-center">
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>Admin@gmail.com</td>
+        <td>003245568</td>
+        <td>Admin</td>
+        <td>
+          <a class ="btn btn-outline-info">Details</a>
+          <a  class="btn btn-outline-warning" [routerLink]="['/home','edit-user']">Edit</a>
+          <a  class="btn btn-outline-danger">Delete</a>
+        </td>
+      </tr>
+      <tr class="text-center">
+        <th scope="row">4</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>cm@gmail.com</td>
+        <td>0032454565568</td>
+        <td>Cm</td>
+        <td>
+          <a class ="btn btn-outline-info">Details</a>
+          <a  class="btn btn-outline-warning" [routerLink]="['/home','edit-user']">Edit</a>
+          <a  class="btn btn-outline-danger">Delete</a>
+        </td>
+      </tr>-->
+      </tbody>
+    </table>
+  </div>
+ <!-- <div class="col">
+    <router-outlet></router-outlet>
+  </div>-->
+</div>
+

@@ -1,0 +1,157 @@
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-info ">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-home"></i>
+          Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-list-alt"></i>
+          Briefs
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-compass"></i>
+          Explorer
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-comments"></i>
+          Forum
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link " href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-cog"></i>
+          Settings
+          <span class="sr-only">(current)</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+          <a class="dropdown-item" [routerLink]="['/home','list-promos']">Promotions</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-referentiels']">References</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-grp-competences']">Groupe Competences</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-competences']">Competences</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link " href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user"></i>
+          Users
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" [routerLink]="['/home','list-users']">Utilisateurs</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-profils']">Profils</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-profilSortie']">Profil de Sortie</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-history"></i>
+          Historique
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+    <div class="right_area">
+        <img src="./assets/images/SALogo.png" class="profile_image mr-3" alt="">
+        <h4 style="text-align: center">Koroboto</h4>
+    </div>
+    <div>
+      <button class="btn btn-warning mb-5" (click)="deconnexion()">Déconnexion</button>
+    </div>
+  </div>
+</nav>
+
+
+<!--<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-info">
+  <a class="navbar-brand" href="#">
+    <i class="fa fa-home"></i>
+    Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-home"></i>
+          Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-list-alt"></i>
+          Briefs
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-compass"></i>
+          Explorer
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-comments"></i>
+          Forum
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link " href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-cog"></i>
+          Settings
+          <span class="sr-only">(current)</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+          <a class="dropdown-item" [routerLink]="['/home','list-promos']">Promotions</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-referentiels']">References</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-grp-competences']">Groupe Competences</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-competences']">Competences</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link " href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user"></i>
+          Users
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" [routerLink]="['/home','list-users']">Utilisateurs</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-profils']">Profils</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-profilSortie']">Profil de Sortie</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-history"></i>
+          Historique
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+    <div class="right_area">
+      <img src="./assets/images/SALogo.png" class="profile_image mr-3" alt="">
+      <h4 style="text-align: center">Koroboto</h4>
+    </div>
+    <div>
+      <button class="btn btn-warning mb-5" [routerLink]="['/login']">Déconnexion</button>
+    </div>
+  </div>
+</nav>-->

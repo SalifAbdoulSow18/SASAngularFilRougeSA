@@ -1,0 +1,51 @@
+<h1 class="text-center">L'ajout de Competence</h1>
+<form class="row col-10 m-auto p-4">
+  <div class="col p-4 m-auto">
+    <div class="row m-3">
+      <label  class="col-3 float-left">Groupe de Competence</label>
+      <select class="form-control col-8 float-right">
+        <option>Groupe de Competence</option>
+        <option>Développement Web et mobile</option>
+        <option>Développement Full</option>
+        <option>Web et mobile</option>
+      </select>
+    </div>
+    <div class=" row m-3">
+      <label class="col-3 float-left">Libelle</label>
+      <input type="text" class="form-control col-8 float-right" placeholder="Créer une base de données">
+    </div>
+    <!--//tfugeakhFJIOPUOGEIOIOAGYYYOIHFUIFEÇ_rhc _hhyveey_çvh" èch_bvèc_nryèy-->
+    <div class="niveau">
+      <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Niveau 1</a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Niveau 2</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Niveau 3</button>
+      </p>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+            <textarea></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body">
+              <textarea></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample3">
+            <div class="card card-body">
+              <textarea></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" id="submit" [routerLink]="['/home','list-competences']" class="btn btn-info col-sm-4 p-3 mt-4">Soumettre</button>
+  </div>
+</form>
