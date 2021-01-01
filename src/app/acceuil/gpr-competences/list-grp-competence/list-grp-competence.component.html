@@ -1,5 +1,5 @@
 <h1 class="text-center">Les Groupes de Competences</h1>
-<a [routerLink]="['/home','add-grp-competence']"><i class="fa fa-user-plus fa-3x"></i></a>
+<a [routerLink]="['/home','add-grp-competence']"><i class="fa fa-user-plus fa-3x">Créer</i></a>
 <div class="row bg-info">
   <app-item-grp-competence [gc]="grpC" *ngFor="let grpC of grpCompetence"  class="card col-sm-4 mb-4"></app-item-grp-competence>
 </div>

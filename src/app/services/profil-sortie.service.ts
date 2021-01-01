@@ -12,7 +12,7 @@ export class ProfilSortieService {
 
   // tslint:disable-next-line:typedef
   getProfilSortie() {
-    return this.httpClient.get( `${ this.baseUrl }/admin/profilsorties`) ;
+    return this.httpClient.get( `${ this.baseUrl }/admin/profilsorties?status=1`) ;
   }
 
   // tslint:disable-next-line:typedef
@@ -21,7 +21,12 @@ export class ProfilSortieService {
     return this.httpClient.post( `${ this.baseUrl }/admin/profilsorties`, {libelle}) ;
   }
   // tslint:disable-next-line:typedef
-  deleteProfilSortie() {
-    return this.httpClient.delete( `${ this.baseUrl }/admin/profilsorties/{id}`) ;
+  editProfilSortie(libelle: string, id: number) {
+    // @ts-ignore
+    return this.httpClient.put( `${ this.baseUrl }/admin/profilsorties/` + id, {libelle}) ;
+  }
+  // tslint:disable-next-line:typedef
+  deleteProfilSortie(id: number) {
+    return this.httpClient.delete( `${ this.baseUrl }/admin/profilsorties/` + id) ;
   }
 }

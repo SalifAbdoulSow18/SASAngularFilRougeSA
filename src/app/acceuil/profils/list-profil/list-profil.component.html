@@ -1,24 +1,28 @@
 <h1 class="text-center">La liste de mes Profils</h1>
 <hr>
 <div class="row">
-  <div class="col-sm-7 m-auto">
-    <a [routerLink]="['/home','add-profil']"><i class="fa fa-user-plus fa-3x"></i></a>
-    <table class="table table-info">
+  <div class="col-sm-9 m-auto">
+    <form #addProfil="ngForm" (ngSubmit)="AjoutProfil(addProfil)">
+      <div class="form-group" class="float-left">
+        <input type="text" class="mr-2" name="libelle" ngModel class="form-control" [hidden]="status" required>
+      </div>
+      <button class="btn btn-info float-right" (click)="status=!status" type="submit" ><i class="fa fa-user-plus fa-3x">Créer</i></button>
+    </form>
+
+    <table class="table table-info mt-2">
       <thead>
       <tr class="bg-dark text-center" style="color: white">
-        <th scope="col">Id</th>
         <th scope="col">Libelle</th>
         <th scope="col">Action</th>
       </tr>
       </thead>
       <tbody *ngFor="let profil of profils">
       <tr class="text-center">
-        <th scope="row">{{profil.id}}</th>
-        <td>{{profil.libelle}}</td>
+        <td style="font-weight: bold"><input type="text" style="display: none" id="profil{{profil.id}}" value="{{profil.libelle}}"><span id="profile{{profil.id}}">{{profil.libelle}}</span></td>
         <td>
           <a class="btn btn-outline-info mr-2">Details</a>
-          <a class="btn btn-outline-warning mr-2" [routerLink]="['/home','edit-profil']">Edit</a>
-          <a  class="btn btn-outline-danger">Delete</a>
+          <a class="btn btn-outline-warning mr-2" (click)="updateProfil(profil)" (click)="editProfil(profil)">Edit</a>
+          <a (click)="removeProfil(profil.id)" class="btn btn-outline-danger">Delete</a>
         </td>
       </tr>
       </tbody>

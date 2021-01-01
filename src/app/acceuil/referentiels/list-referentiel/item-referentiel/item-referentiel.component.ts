@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ItemReferentielComponent implements OnInit {
   // @ts-ignore
-  @Input() referentiel: Referentiel;
+  @Input() referentiel: any;
 
 
   constructor() { }

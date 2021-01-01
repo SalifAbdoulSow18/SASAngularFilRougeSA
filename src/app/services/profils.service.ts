@@ -13,7 +13,7 @@ export class ProfilsService {
 
   // tslint:disable-next-line:typedef
   getProfil() {
-    return this.httpClient.get( `${ this.baseUrl }/admin/profils`) ;
+    return this.httpClient.get( `${ this.baseUrl }/admin/profils?status=1`) ;
   }
 
   // tslint:disable-next-line:typedef
@@ -22,7 +22,12 @@ export class ProfilsService {
     return this.httpClient.post( `${ this.baseUrl }/admin/profils`, {libelle}) ;
   }
   // tslint:disable-next-line:typedef
-  deleteProfil() {
-    return this.httpClient.delete( `${ this.baseUrl }/admin/profils/{id}`) ;
+  editProfil(libelle: string, id: number) {
+    // @ts-ignore
+    return this.httpClient.put( `${ this.baseUrl }/admin/profils/` + id, {libelle}) ;
+  }
+  // tslint:disable-next-line:typedef
+  deleteProfil(id: number) {
+    return this.httpClient.delete( `${ this.baseUrl }/admin/profils/` + id) ;
   }
 }

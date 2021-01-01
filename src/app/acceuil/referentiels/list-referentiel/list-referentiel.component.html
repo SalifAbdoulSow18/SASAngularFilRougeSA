@@ -1,5 +1,5 @@
 <h1 class="text-center">La liste des Referentiels</h1>
-<a [routerLink]="['/home','add-referentiel']"><i class="fa fa-user-plus fa-3x"></i></a>
+<a [routerLink]="['/home','add-referentiel']"><i class="fa fa-user-plus fa-3x">Créer</i></a>
 <div class="row bg-info">
-<app-item-referentiel [referentiel]="ref" *ngFor="let ref of reference"  class="card col-sm-4 mb-4"></app-item-referentiel>
+<app-item-referentiel [referentiel]="ref" *ngFor="let ref of referentiels"  class="card col-sm-4 mb-4"></app-item-referentiel>
 </div>
