@@ -7,9 +7,11 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ItemGrpCompetenceComponent implements OnInit {
   // @ts-ignore
-  @Input() gc: GrpCompetence;
+  @Input() groupeCompetence: any;
 
-  constructor() { }
+  constructor() {
+    console.log(this.groupeCompetence);
+  }
 
   ngOnInit(): void {
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../../../services/users.service';
 import {ProfilSortieService} from '../../../services/profil-sortie.service';
 import {NgForm} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-profil-sortie',
@@ -26,6 +27,14 @@ export class ListProfilSortieComponent implements OnInit {
   // tslint:disable-next-line:typedef
   AjoutProfilSortie(addProfilsorti: NgForm) {
     this.profilsortieService.addProfilSortie(addProfilsorti.value.libelle).subscribe(reponse => {
+      // mes alert pour la modification!!!
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      });
       console.log(reponse);
     });
   }
@@ -60,7 +69,6 @@ export class ListProfilSortieComponent implements OnInit {
     // @ts-ignore
     // idLibelle.style.display = 'none';
     const idInput = document.getElementById('profil' + babs.id);
-    alert(this.statusInput);
     if ( this.statusInput === true) {
       // @ts-ignore
       if (idInput.value.trim() === '') {
@@ -70,6 +78,14 @@ export class ListProfilSortieComponent implements OnInit {
 
         this.profilsortieService.editProfilSortie(idInput.value, babs.id).subscribe(
           data => {
+// mes alert pour la modification!!!
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Your work has been saved',
+              showConfirmButton: false,
+              timer: 1500
+            });
             // @ts-ignore
             idLibelle.innerText = idInput.value ;
             // @ts-ignore

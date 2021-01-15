@@ -1,33 +1,50 @@
-<a [routerLink]="['/home','add-competence']"><i class="fa fa-user-plus fa-3x">Créer</i></a>
-
-<p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Niveau 1</a>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Niveau 2</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Niveau 3</button>
-</p>
-<div class="row">
-  <div class="col">
-    <div class="collapse multi-collapse col" id="multiCollapseExample1">
-      <div class="card card-body col-6 row-cols-4">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-      <div class="card card-body col-6 row-cols-4">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
+<button class="btn btn-info mt-2" [routerLink]="['/home','add-competence']" type="submit" ><i class="fa fa-user-plus fa-3x">Créer</i></button>
+<div class="row complet mt-2">
+  <div class="col-5 listcomp bg-danger float-left">
+    <span style="font-size: 30px; font-weight: bold; text-align: center">La liste de mes Competences</span>
+    <select class="col-lg-10 selection">
+      <option>Select a competence</option>
+      <option *ngFor="let competence of Competences">{{competence.nomCompetence}}</option>
+    </select>
   </div>
-  <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample2">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample3">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
+  <div class="col-7 float-right">
+    <div>
+        <button class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Niveau 1</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Niveau 2</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Niveau 3</button>
+        <div class="col mt-4">
+          <div class="collapse multi-collapse col" id="multiCollapseExample1">
+            <div class="card card-body col-6 float-left">
+              <label style="font-weight: bold">Critere d'evaluation </label>
+              <span>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+            </div>
+            <div class="card card-body col-6 float-right">
+              <label style="font-weight: bold">Groupe d'action </label>
+              <span>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+            </div>
+          </div>
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body col-6 float-left">
+              <label style="font-weight: bold">Critere d'evaluation </label>
+              <span>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+            </div>
+            <div class="card card-body col-6 float-right">
+              <label style="font-weight: bold">Groupe d'action </label>
+              <span>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+            </div>
+          </div>
+          <div class="collapse multi-collapse" id="multiCollapseExample3">
+            <div class="card card-body col-6 float-left">
+              <label style="font-weight: bold">Critere d'evaluation </label>
+              <span>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+            </div>
+            <div class="card card-body col-6 float-right">
+              <label style="font-weight: bold">Groupe d'action </label>
+              <span>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</span>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>
+

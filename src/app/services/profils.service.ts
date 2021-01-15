@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class ProfilsService {
   addProfil(libelle: string) {
     // @ts-ignore
     return this.httpClient.post( `${ this.baseUrl }/admin/profils`, {libelle}) ;
+  }
+  getProfilById(id: number): Observable<any> {
+    return this.httpClient.get( `${ this.baseUrl }/admin/profils/` + id) ;
   }
   // tslint:disable-next-line:typedef
   editProfil(libelle: string, id: number) {

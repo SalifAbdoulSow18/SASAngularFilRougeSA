@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfilsService} from '../../../services/profils.service';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-profil',
@@ -54,6 +55,15 @@ export class ListProfilComponent implements OnInit {
 
         this.profilService.editProfil(idInput.value, babs.id).subscribe(
           data => {
+
+            // mes alert pour la modification!!!
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Your work has been saved',
+              showConfirmButton: false,
+              timer: 1500
+            });
             // @ts-ignore
             idLibelle.innerText = idInput.value ;
             // @ts-ignore

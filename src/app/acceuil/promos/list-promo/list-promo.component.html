@@ -1,46 +1,28 @@
 <h1 class="text-center">La liste de mes Promo</h1>
 <hr>
 <div class="row">
-  <div class="col-sm-7 m-auto">
-    <a [routerLink]="['/home','add-promo']"><i class="fa fa-user-plus fa-3x">Créer</i></a>
+  <div class="col-sm-10 m-auto">
+    <button class="btn btn-info float-right" [routerLink]="['/home','add-promo']" type="submit" ><i class="fa fa-user-plus fa-3x">Créer</i></button>
     <table class="table table-info">
       <thead>
       <tr class="bg-dark text-center" style="color: white">
-        <th scope="col">Id</th>
-        <th scope="col">libelle</th>
-        <th scope="col">status</th>
+        <th scope="col">Libelle</th>
+        <th scope="col">Date Debut</th>
+        <th scope="col">Date Fin</th>
+        <th scope="col">Annee Academique</th>
         <th scope="col">Action</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody *ngFor="let promo of promos">
       <tr class="text-center">
-        <th scope="row">1</th>
-        <td>Promo 1</td>
-        <td>Désactivé</td>
+        <td>{{promo.libelle}}</td>
+        <td>{{promo.dateDebut}}</td>
+        <td>{{promo.dateFin}}</td>
+        <td>{{promo.annee}}</td>
         <td>
-          <a class="btn btn-outline-info">Details</a>
-          <a class="btn btn-outline-warning" [routerLink]="['/home','edit-profil']">Edit</a>
-          <a  class="btn btn-outline-danger">Delete</a>
-        </td>
-      </tr>
-      <tr class="text-center">
-        <th scope="row">2</th>
-        <td>Promo 2</td>
-        <td>Désactivé</td>
-        <td>
-          <a class="btn btn-outline-info">Details</a>
-          <a class="btn btn-outline-warning" [routerLink]="['/home','edit-promo']">Edit</a>
-          <a  class="btn btn-outline-danger">Delete</a>
-        </td>
-      </tr>
-      <tr class="text-center">
-        <th scope="row">3</th>
-        <td>Promo 3</td>
-        <td>Activé</td>
-        <td>
-          <a class="btn btn-outline-info">Details</a>
-          <a class="btn btn-outline-warning" [routerLink]="['/home','edit-promo']">Edit</a>
-          <a  class="btn btn-outline-danger">Delete</a>
+          <a class="btn btn-outline-info mr-2">Details</a>
+          <a class="btn btn-outline-warning mr-2" [routerLink]="['/home','edit-profil']">Edit</a>
+          <a  class="btn btn-outline-danger mt-2">Delete</a>
         </td>
       </tr>
       </tbody>

@@ -28,6 +28,8 @@ import {FormateurComponent} from './formateur/formateur.component';
 import {ApprenantComponent} from './apprenant/apprenant.component';
 import {CmComponent} from './cm/cm.component';
 import {VerificationGuard} from './verification.guard';
+import {DetailUserComponent} from './acceuil/users/detail-user/detail-user.component';
+import {DetailProfilComponent} from './acceuil/profils/detail-profil/detail-profil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -37,9 +39,11 @@ const routes: Routes = [
   { path: 'cm', component: CmComponent },
   { path: 'home', component: AcceuilComponent, canActivate: [VerificationGuard], children: [
       { path: 'list-users', component: ListUsersComponent },
+      { path: 'list-users/:id', component: DetailUserComponent },
       { path: 'add-user', component: AddUserComponent },
-      { path: 'edit-user', component: EditUserComponent },
+      { path: 'edit-user/:id', component: EditUserComponent },
       { path: 'list-profils', component: ListProfilComponent },
+      { path: 'list-profils/:id', component: DetailProfilComponent },
       { path: 'add-profil', component: AddProfilComponent },
       { path: 'edit-profil', component: EditProfilComponent },
       { path: 'list-profilSortie', component: ListProfilSortieComponent },

@@ -37,6 +37,10 @@ import { FormateurComponent } from './formateur/formateur.component';
 import { ApprenantComponent } from './apprenant/apprenant.component';
 import { CmComponent } from './cm/cm.component';
 import {TokenInterceptor} from './token.interceptor';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { DetailUserComponent } from './acceuil/users/detail-user/detail-user.component';
+import { DetailProfilComponent } from './acceuil/profils/detail-profil/detail-profil.component';
+import {QRCodeModule} from 'angular2-qrcode';
 
 @NgModule({
   declarations: [
@@ -71,14 +75,18 @@ import {TokenInterceptor} from './token.interceptor';
     FormateurComponent,
     ApprenantComponent,
     CmComponent,
+    DetailUserComponent,
+    DetailProfilComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        QRCodeModule,
+        HttpClientModule,
+        NgxPaginationModule,
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

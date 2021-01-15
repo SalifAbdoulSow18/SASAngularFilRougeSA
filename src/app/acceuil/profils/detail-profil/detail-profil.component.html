@@ -1,0 +1,34 @@
+<h1 class="text-center" xmlns:paginate="http://www.w3.org/1999/xhtml" xmlns:paginate="http://www.w3.org/1999/xhtml"
+    xmlns:itemsPerPage="http://www.w3.org/1999/xhtml" xmlns:currentPage="http://www.w3.org/1999/xhtml">
+  LA LISTE DE MES {{profil.libelle}}</h1>
+<hr>
+
+<div class="row">
+  <div class="col-sm m-auto">
+    <a class="btn btn-info retour" [routerLink]="['/home','list-profils']">Retour</a>
+    <table class="table table-info">
+      <thead>
+      <tr class="bg-dark text-center" style="color: white">
+        <th scope="col">Photo</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let user of profil.users | paginate : { itemsPerPage: 6, currentPage: p }">
+      <tr class="text-center">
+        <th scope="row">
+            <img src="data:image/jpeg;base64,{{user.photo}}" alt="">
+        </th>
+        <td>{{user.prenom}}</td>
+        <td>{{user.nom}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <pagination-controls class="float-right"  (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
