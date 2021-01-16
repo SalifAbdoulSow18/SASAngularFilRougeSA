@@ -13,7 +13,7 @@ export class ReferentielService {
 
   // tslint:disable-next-line:typedef
   getReferentiels(): Observable<any> {
-    return this.httpClient.get( `${ this.baseUrl }/admin/referentiels`) ;
+    return this.httpClient.get( `${ this.baseUrl }/admin/referentiels?status=1`) ;
   }
   addReferentiel(referentiel: any): Observable<any> {
     return this.httpClient.post(`${ this.baseUrl }/admin/referentiels`, referentiel) ;

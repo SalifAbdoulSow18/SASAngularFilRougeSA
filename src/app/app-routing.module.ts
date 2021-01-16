@@ -8,10 +8,6 @@ import {ListProfilComponent} from './acceuil/profils/list-profil/list-profil.com
 import {ListProfilSortieComponent} from './acceuil/profilSortie/list-profil-sortie/list-profil-sortie.component';
 import {AddUserComponent} from './acceuil/users/add-user/add-user.component';
 import {EditUserComponent} from './acceuil/users/edit-user/edit-user.component';
-import {AddProfilComponent} from './acceuil/profils/add-profil/add-profil.component';
-import {EditProfilComponent} from './acceuil/profils/edit-profil/edit-profil.component';
-import {AddProfilSortieComponent} from './acceuil/profilSortie/add-profil-sortie/add-profil-sortie.component';
-import {EditProfilSortieComponent} from './acceuil/profilSortie/edit-profil-sortie/edit-profil-sortie.component';
 import {ListPromoComponent} from './acceuil/promos/list-promo/list-promo.component';
 import {AddPromoComponent} from './acceuil/promos/add-promo/add-promo.component';
 import {EditPromoComponent} from './acceuil/promos/edit-promo/edit-promo.component';
@@ -44,11 +40,7 @@ const routes: Routes = [
       { path: 'edit-user/:id', component: EditUserComponent },
       { path: 'list-profils', component: ListProfilComponent },
       { path: 'list-profils/:id', component: DetailProfilComponent },
-      { path: 'add-profil', component: AddProfilComponent },
-      { path: 'edit-profil', component: EditProfilComponent },
       { path: 'list-profilSortie', component: ListProfilSortieComponent },
-      { path: 'add-profil-sortie', component: AddProfilSortieComponent },
-      { path: 'edit-profil-sortie', component: EditProfilSortieComponent },
       { path: 'list-promos', component: ListPromoComponent },
       { path: 'add-promo', component: AddPromoComponent },
       { path: 'edit-promo', component: EditPromoComponent },

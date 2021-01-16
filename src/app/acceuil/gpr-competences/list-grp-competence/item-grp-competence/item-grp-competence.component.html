@@ -1,7 +1,7 @@
 <div class="card col-6 m-auto text-center">
   <div class="card-header bg-info text-light">{{groupeCompetence.libelle}}
     <a  [routerLink]="['/home','edit-grp-competence']"><i class="fa fa-edit"></i></a>
-    <a href=""><i class="fa fa-trash"></i></a>
+    <a (click)="removeGrpCompetence(groupeCompetence.id)"><i class="fa fa-trash"></i></a>
   </div>
   <div class="card-body">
     <h5 class="card-title">{{groupeCompetence.description}}</h5>

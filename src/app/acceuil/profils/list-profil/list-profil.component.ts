@@ -45,7 +45,7 @@ export class ListProfilComponent implements OnInit {
   // @ts-ignore
   // idLibelle.style.display = 'none';
     const idInput = document.getElementById('profil' + babs.id);
-    alert(this.bo);
+    /*alert(this.bo);*/
     if ( this.bo === true) {
       // @ts-ignore
       if (idInput.value.trim() === '') {
@@ -77,17 +77,6 @@ export class ListProfilComponent implements OnInit {
     }
 }
 
-
-
-
-  // tslint:disable-next-line:typedef
-  /*onCreate() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    this.dialog.open(AjouterProfilsComponent, dialogConfig);
-  }*/
-
   // tslint:disable-next-line:typedef
   AjoutProfil(addProfil: NgForm) {
     // @ts-ignore
@@ -99,8 +88,25 @@ export class ListProfilComponent implements OnInit {
   // tslint:disable-next-line:typedef
   removeProfil(id: number){
     console.log(id);
-    this.profilService.deleteProfil(id).subscribe(reponse => {
-      console.log(reponse);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.profilService.deleteProfil(id).subscribe(reponse => {
+          console.log(reponse);
+        });
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
+      }
     });
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UsersService} from '../../../services/users.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-user',
@@ -22,7 +23,8 @@ export class EditUserComponent implements OnInit {
   myForm: any = FormGroup ;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UsersService, private route: ActivatedRoute) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private formBuilder: FormBuilder, private userService: UsersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -70,7 +72,16 @@ export class EditUserComponent implements OnInit {
     formData.append('photo', this.selectedFile);
     // @ts-ignore
     this.userService.editUser(formData, idp).subscribe(reponse => {
-        console.log(reponse);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setTimeout(() => {this.router.navigate(['/home', 'list-users']); }, 3000);
+
+      console.log(reponse);
       }, (error) => {
         console.log(error);
       }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UsersService} from '../../../services/users.service';
+import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class AddUserComponent implements OnInit {
   myForm: any = FormGroup ;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UsersService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -68,8 +70,15 @@ export class AddUserComponent implements OnInit {
     console.log(this.selectedFile);
     formData.append('photo', this.selectedFile);
     this.userService.addUser(formData).subscribe(reponse => {
-      alert('success!');
-      console.log(reponse);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setTimeout(() => {this.router.navigate(['/home', 'list-users']); }, 3000);
+        console.log(reponse);
     }, (error) => {
         console.log(error);
       }

@@ -11,11 +11,7 @@ import { ListUsersComponent } from './acceuil/users/list-users/list-users.compon
 import { AddUserComponent } from './acceuil/users/add-user/add-user.component';
 import { EditUserComponent } from './acceuil/users/edit-user/edit-user.component';
 import { ListProfilComponent } from './acceuil/profils/list-profil/list-profil.component';
-import { AddProfilComponent } from './acceuil/profils/add-profil/add-profil.component';
-import { EditProfilComponent } from './acceuil/profils/edit-profil/edit-profil.component';
 import { ListProfilSortieComponent } from './acceuil/profilSortie/list-profil-sortie/list-profil-sortie.component';
-import { AddProfilSortieComponent } from './acceuil/profilSortie/add-profil-sortie/add-profil-sortie.component';
-import { EditProfilSortieComponent } from './acceuil/profilSortie/edit-profil-sortie/edit-profil-sortie.component';
 import { ListPromoComponent } from './acceuil/promos/list-promo/list-promo.component';
 import { AddPromoComponent } from './acceuil/promos/add-promo/add-promo.component';
 import { EditPromoComponent } from './acceuil/promos/edit-promo/edit-promo.component';
@@ -53,11 +49,7 @@ import {QRCodeModule} from 'angular2-qrcode';
     AddUserComponent,
     EditUserComponent,
     ListProfilComponent,
-    AddProfilComponent,
-    EditProfilComponent,
     ListProfilSortieComponent,
-    AddProfilSortieComponent,
-    EditProfilSortieComponent,
     ListPromoComponent,
     AddPromoComponent,
     EditPromoComponent,

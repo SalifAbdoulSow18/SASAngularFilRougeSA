@@ -40,8 +40,25 @@ export class ListProfilSortieComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   removeProfilSortie(id: number){
-    this.profilsortieService.deleteProfilSortie(id).subscribe(reponse => {
-      console.log(reponse);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.profilsortieService.deleteProfilSortie(id).subscribe(reponse => {
+          console.log(reponse);
+        });
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
+      }
     });
   }
 

@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -31,19 +32,29 @@ export class AuthentificationService {
           // stockage de token d'un users dans le localStorage!!!
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', tokenDecode.roles);
+          localStorage.setItem('archive', tokenDecode.status);
           // la redirection à partir des roles
-          if (localStorage.getItem('role') === 'ROLE_ADMIN') {
-            console.log(localStorage.getItem('role'));
-            this.router.navigate(['/home']);
-          } else if (localStorage.getItem('role') === 'ROLE_FORMATEUR'){
-            this.router.navigate(['/formateur']);
-          } else if (localStorage.getItem('role') === 'ROLE_CM'){
-            this.router.navigate(['/cm']);
-          } else if (localStorage.getItem('role') === 'ROLE_APPRENANT'){
-            this.router.navigate(['/apprenant']);
+          // @ts-ignore
+          if (localStorage.getItem('archive') === 'true') {
+            if (localStorage.getItem('role') === 'ROLE_ADMIN') {
+              console.log(localStorage.getItem('role'));
+              this.router.navigate(['/home']);
+            } else if (localStorage.getItem('role') === 'ROLE_FORMATEUR') {
+              this.router.navigate(['/formateur']);
+            } else if (localStorage.getItem('role') === 'ROLE_CM') {
+              this.router.navigate(['/cm']);
+            } else if (localStorage.getItem('role') === 'ROLE_APPRENANT') {
+              this.router.navigate(['/apprenant']);
+            } else {
+              this.router.navigate(['/login']);
+            }
           } else {
-            this.router.navigate(['/login']);
-            console.log( 'veuillez reverifier vos données!!!' ) ;
+            Swal.fire({
+              icon: 'error',
+              title: 'You are not allowed!',
+              text: 'Ask the administration!',
+              confirmButtonColor: '#d33'
+            });
           }
         })
       ) ;
