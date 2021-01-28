@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UsersService} from '../../../services/users.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class EditUserComponent implements OnInit {
 
+  idEdit: any;
   nom = '';
   prenom = '';
   email = '';
@@ -27,6 +28,25 @@ export class EditUserComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private userService: UsersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        const id = params.id;
+        this.idEdit = +id;
+        console.log(this.idEdit);
+        this.userService.getUserById(this.idEdit).subscribe(
+          data => {
+            console.log(data);
+            this.nom = data.nom ;
+            this.prenom = data.prenom;
+            this.email = data.email;
+            this.phone = data.phone ;
+            this.photo = data.photo;
+          }, error => {
+            console.log(error);
+          }
+        );
+      }
+    );
 
     this.myForm = this.formBuilder.group({
       prenom: ['', [ Validators.required]],
@@ -70,16 +90,16 @@ export class EditUserComponent implements OnInit {
     }
     console.log(this.selectedFile);
     formData.append('photo', this.selectedFile);
-    // @ts-ignore
+    formData.append('_method', 'PUT');
     this.userService.editUser(formData, idp).subscribe(reponse => {
-      Swal.fire({
+      /*Swal.fire({
         position: 'top-end',
         icon: 'success',
         title: 'Your work has been saved',
         showConfirmButton: false,
         timer: 1500
       });
-      setTimeout(() => {this.router.navigate(['/home', 'list-users']); }, 3000);
+      setTimeout(() => {this.router.navigate(['/home', 'list-users']); }, 3000);*/
 
       console.log(reponse);
       }, (error) => {

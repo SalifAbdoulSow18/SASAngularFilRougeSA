@@ -46,7 +46,12 @@ export class AuthentificationService {
             } else if (localStorage.getItem('role') === 'ROLE_APPRENANT') {
               this.router.navigate(['/apprenant']);
             } else {
-              this.router.navigate(['/login']);
+              Swal.fire({
+                icon: 'error',
+                title: 'data invalid',
+                text: 'Verified your data',
+                confirmButtonColor: '#d33'
+              });
             }
           } else {
             Swal.fire({

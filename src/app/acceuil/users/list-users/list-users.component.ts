@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../../../services/users.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+// @ts-ignore
+import pdfMake from 'pdfmake/build/pdfmake';
+// @ts-ignore
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-list-users',
@@ -34,7 +39,7 @@ export class ListUsersComponent implements OnInit {
     Swal.fire({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
@@ -51,5 +56,11 @@ export class ListUsersComponent implements OnInit {
         );
       }
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  generatePdf() {
+    const documentDefinition = {content: 'A sample PDF document generated using Angular and PDFMake' };
+    pdfMake.createPdf(documentDefinition).open();
   }
 }

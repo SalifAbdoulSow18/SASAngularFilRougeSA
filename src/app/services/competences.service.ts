@@ -11,11 +11,19 @@ export class CompetencesService {
   baseUrl = environment.api_url ;
   constructor(private httpClient: HttpClient) {}
 
-  // tslint:disable-next-line:typedef
-  getCompetences() {
+  addCompetence(competences: any): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}/admin/competences`, competences);
+  }
+  getCompetences(): Observable<any> {
     return this.httpClient.get( `${ this.baseUrl }/admin/competences?status=1`) ;
   }
   deleteCompetence(id: number): Observable<any> {
     return this.httpClient.delete( `${ this.baseUrl }/admin/competences/` + id) ;
+  }
+  editCompetence(competences: any, id: number): Observable<any> {
+    return this.httpClient.put(`${ this.baseUrl }/admin/competences/` + id, competences) ;
+  }
+  getCompetencesById(id: number): Observable<any> {
+    return this.httpClient.get( `${ this.baseUrl }/admin/competences/` + id) ;
   }
 }

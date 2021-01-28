@@ -39,7 +39,10 @@
       </tr>
       </tbody>
     </table>
-    <pagination-controls class="float-right" (pageChange)="p = $event"></pagination-controls>
+    <button class="btn btn-danger" (click)="generatePdf()">Open PDF</button>
+    <pagination-controls class="float-right" (pageChange)="p = $event">
+
+    </pagination-controls>
   </div>
 </div>
 

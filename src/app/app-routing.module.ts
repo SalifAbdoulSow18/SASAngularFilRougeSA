@@ -49,10 +49,10 @@ const routes: Routes = [
       { path: 'edit-referentiel', component: EditReferentielComponent },
       { path: 'list-competences', component: ListCompetenceComponent },
       { path: 'add-competence', component: AddCompetenceComponent },
-      { path: 'edit-competence', component: EditCompetenceComponent },
+      { path: 'edit-competence/:id', component: EditCompetenceComponent },
       { path: 'list-grp-competences', component: ListGrpCompetenceComponent },
       { path: 'add-grp-competence', component: AddGrpCompetenceComponent },
-      { path: 'edit-grp-competence', component: EditGrpCompetenceComponent },
+      { path: 'edit-grp-competence/:id', component: EditGrpCompetenceComponent },
     ]
   },
   { path: 'not-found', component: PageNotFoundComponent },

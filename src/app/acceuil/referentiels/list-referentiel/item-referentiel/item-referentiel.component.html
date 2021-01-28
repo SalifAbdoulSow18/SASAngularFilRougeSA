@@ -1,12 +1,12 @@
 <div class="card col-6 m-auto text-center">
-  <div class="card-header bg-info text-light">{{referentiel.libelle}}
+  <div class="card-header bg-info text-light font-weight-bold">{{referentiel.libelle}}
     <a [routerLink]="['/home','edit-referentiel']"><i class="fa fa-edit"></i></a>
     <a (click)="removeGrpCompetence(referentiel.id)"><i class="fa fa-trash"></i></a>
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{referentiel.presentation}}</h5>
+    <p class="card-title">{{referentiel.presentation}}</p>
     <p class="card-text">{{referentiel.programme}} </p>
-    <div class="card-footer text-muted">{{referentiel.critereEvaluation}}</div>
+    <div class="card-footer">{{referentiel.critereEvaluation}}</div>
   </div>
-  <div class="card-footer text-muted">{{referentiel.critereAdmission}}</div>
+  <div class="card-footer">{{referentiel.critereAdmission}}</div>
 </div>

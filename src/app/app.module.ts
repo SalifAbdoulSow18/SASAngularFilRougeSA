@@ -37,6 +37,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { DetailUserComponent } from './acceuil/users/detail-user/detail-user.component';
 import { DetailProfilComponent } from './acceuil/profils/detail-profil/detail-profil.component';
 import {QRCodeModule} from 'angular2-qrcode';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import {QRCodeModule} from 'angular2-qrcode';
         QRCodeModule,
         HttpClientModule,
         NgxPaginationModule,
+        NgMultiSelectDropDownModule .forRoot( ),
     ],
   providers: [
     {

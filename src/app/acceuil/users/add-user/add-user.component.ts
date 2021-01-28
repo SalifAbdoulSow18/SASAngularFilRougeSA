@@ -75,7 +75,7 @@ export class AddUserComponent implements OnInit {
           icon: 'success',
           title: 'Your work has been saved',
           showConfirmButton: false,
-          timer: 1500
+          timer: 2500
         });
         setTimeout(() => {this.router.navigate(['/home', 'list-users']); }, 3000);
         console.log(reponse);
