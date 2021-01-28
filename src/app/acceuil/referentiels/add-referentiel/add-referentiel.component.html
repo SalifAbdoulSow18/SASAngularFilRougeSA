@@ -25,12 +25,18 @@
       <div *ngIf="f.presentation.errors.required">Presentation is required</div>
     </div>
     <div class="row m-3">
-      <label class="col-3 float-left">Competences</label>
-      <textarea class="col-8 float-right" [(ngModel)]="competence"
-                formControlName="competence"
-                [ngClass]="{'is-invalid': submitted && f.competence.errors }">
-
-      </textarea>
+      <label class="col-3 float-left">Groupes Competences</label>
+      <ng-multiselect-dropdown
+        name="gprCompetence" id="gprCompetence" class="col-8 float-right"
+        formControlName="gprCompetence"
+        [placeholder]="'select groupes competences'"
+        [(ngModel)]="selectedItems"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
     </div>
     <div class="text-danger text-center" *ngIf="submitted && f.competence.errors">
       <div *ngIf="f.competence.errors.required">Competence is required</div>

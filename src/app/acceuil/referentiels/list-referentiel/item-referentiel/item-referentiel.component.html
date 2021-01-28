@@ -1,6 +1,6 @@
 <div class="card col-6 m-auto text-center">
   <div class="card-header bg-info text-light font-weight-bold">{{referentiel.libelle}}
-    <a [routerLink]="['/home','edit-referentiel']"><i class="fa fa-edit"></i></a>
+    <a [routerLink]="['/home','edit-referentiel', referentiel.id]"><i class="fa fa-edit"></i></a>
     <a (click)="removeGrpCompetence(referentiel.id)"><i class="fa fa-trash"></i></a>
   </div>
   <div class="card-body">

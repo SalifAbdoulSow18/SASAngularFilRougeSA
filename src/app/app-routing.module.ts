@@ -46,7 +46,7 @@ const routes: Routes = [
       { path: 'edit-promo', component: EditPromoComponent },
       { path: 'list-referentiels', component: ListReferentielComponent },
       { path: 'add-referentiel', component: AddReferentielComponent },
-      { path: 'edit-referentiel', component: EditReferentielComponent },
+      { path: 'edit-referentiel/:id', component: EditReferentielComponent },
       { path: 'list-competences', component: ListCompetenceComponent },
       { path: 'add-competence', component: AddCompetenceComponent },
       { path: 'edit-competence/:id', component: EditCompetenceComponent },
