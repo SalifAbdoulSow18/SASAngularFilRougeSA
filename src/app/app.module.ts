@@ -38,6 +38,8 @@ import { DetailUserComponent } from './acceuil/users/detail-user/detail-user.com
 import { DetailProfilComponent } from './acceuil/profils/detail-profil/detail-profil.component';
 import {QRCodeModule} from 'angular2-qrcode';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ListUsersArchiveComponent } from './acceuil/users/list-users-archive/list-users-archive.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
     CmComponent,
     DetailUserComponent,
     DetailProfilComponent,
+    FilterPipe,
+    ListUsersArchiveComponent,
   ],
     imports: [
         BrowserModule,

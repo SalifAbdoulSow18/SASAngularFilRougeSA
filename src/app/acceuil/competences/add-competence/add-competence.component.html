@@ -6,6 +6,7 @@
       <ng-multiselect-dropdown
         name="gprCompetence" id="gprCompetence" class="col-8 float-right"
         formControlName="gprCompetence"
+        [ngClass]="{'is-invalid': submitted && f.gprCompetence.errors }"
         [placeholder]="'select groupes competences'"
         [(ngModel)]="selectedItems"
         [settings]="dropdownSettings"
@@ -15,16 +16,19 @@
       >
       </ng-multiselect-dropdown>
     </div>
+    <div class="text-danger text-center" *ngIf="submitted && f.gprCompetence.errors">
+      <div *ngIf="f.gprCompetence.errors.required">Groupe Competence is required</div>
+    </div>
     <div class=" row m-3">
       <label class="col-3 float-left">Libelle</label>
-      <input type="text" class="form-control col-8 float-right"
+      <input type="text" class="col-8 float-right"
              placeholder="Créer une competence"
              [(ngModel)]="nomCompetence"
              formControlName="nomCompetence"
              [ngClass]="{'is-invalid': submitted && f.nomCompetence.errors }"
       >
     </div>
-    <div class="text-danger" *ngIf="submitted && f.nomCompetence.errors">
+    <div class="text-danger text-center" *ngIf="submitted && f.nomCompetence.errors">
       <div *ngIf="f.nomCompetence.errors.required">Libelle is required</div>
     </div>
     <div class="">
@@ -35,7 +39,7 @@
       </p>
       <div class="row">
         <div class="col">
-          <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="" id="multiCollapseExample1">
             <div class="card card-body">
               <label>Critere d'Admission</label>
             <textarea [(ngModel)]="critereAction1"
@@ -61,7 +65,7 @@
           </div>
         </div>
         <div class="col">
-          <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="" id="multiCollapseExample2">
             <div class="card card-body">
               <label>Critere d'Admission</label>
               <textarea [(ngModel)]="critereAction2"
@@ -87,7 +91,7 @@
           </div>
         </div>
         <div class="col">
-          <div class="collapse multi-collapse" id="multiCollapseExample3">
+          <div class="" id="multiCollapseExample3">
             <div class="card card-body">
               <label>Critere d'Admission</label>
               <textarea [(ngModel)]="critereAction3"

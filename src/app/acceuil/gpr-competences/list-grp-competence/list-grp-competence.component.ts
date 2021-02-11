@@ -8,6 +8,7 @@ import {GrpComprtenceService} from '../../../services/grp-comprtence.service';
   styleUrls: ['./list-grp-competence.component.css']
 })
 export class ListGrpCompetenceComponent implements OnInit {
+  p: number | undefined;
   grpCompetences: any;
 
   constructor(private grpCompetenceService: GrpComprtenceService) {

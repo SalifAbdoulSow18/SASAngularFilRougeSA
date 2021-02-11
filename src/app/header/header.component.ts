@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthentificationService} from '../services/authentification.service';
 import {Router} from '@angular/router';
+import {UsersService} from '../services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,17 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthentificationService, private router: Router) { }
+  myData: any;
+  infoConnect: any;
+  constructor(private authService: AuthentificationService, private router: Router, private userService: UsersService) {
+    // @ts-ignore
+    this.myData = localStorage.getItem('id');
+    // console.log(this.myData);
+    this.userService.getUserById(this.myData).subscribe(data => {
+      this.infoConnect = data ;
+      // console.log(this.infoConnect);
+    });
+  }
 
   ngOnInit(): void {
   }

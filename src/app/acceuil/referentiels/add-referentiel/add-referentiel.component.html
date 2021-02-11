@@ -24,11 +24,11 @@
     <div class="text-danger text-center" *ngIf="submitted && f.presentation.errors">
       <div *ngIf="f.presentation.errors.required">Presentation is required</div>
     </div>
-    <div class="row m-3">
+   <!-- <div class="row m-3">
       <label class="col-3 float-left">Groupes Competences</label>
       <ng-multiselect-dropdown
-        name="gprCompetence" id="gprCompetence" class="col-8 float-right"
-        formControlName="gprCompetence"
+        name="groupeCompetences" id="groupeCompetences" class="col-8 float-right"
+        formControlName="groupeCompetences"
         [placeholder]="'select groupes competences'"
         [(ngModel)]="selectedItems"
         [settings]="dropdownSettings"
@@ -38,21 +38,9 @@
       >
       </ng-multiselect-dropdown>
     </div>
-    <div class="text-danger text-center" *ngIf="submitted && f.competence.errors">
-      <div *ngIf="f.competence.errors.required">Competence is required</div>
-    </div>
-    <div class="row m-3">
-      <label class="col-3 float-left">Programme</label>
-      <input type="text" class="form-control col-8 float-right"
-             [(ngModel)]="programme"
-             formControlName="programme"
-             [ngClass]="{'is-invalid': submitted && f.programme.errors }"
-             placeholder="programme">
-    </div>
-    <div class="text-danger text-center" *ngIf="submitted && f.programme.errors">
-      <div *ngIf="f.programme.errors.required">Programme is required</div>
-    </div>
-
+    <div class="text-danger text-center" *ngIf="submitted && f.groupeCompetences.errors">
+      <div *ngIf="f.groupeCompetences.errors.required">Groupe Competence is required</div>
+    </div>-->
     <div class="row m-3">
       <label class="col-3 float-left">Critères d'évaluation</label>
       <textarea class="col-8 float-right" [(ngModel)]="critereEvaluation"
@@ -74,6 +62,18 @@
     </div>
     <div class="text-danger text-center" *ngIf="submitted && f.critereAdmission.errors">
       <div *ngIf="f.critereAdmission.errors.required">Critere Admission is required</div>
+    </div>
+    <div class="row m-3 custom-file">
+      <label class="custom-file-label col-lg-11 float-right" for="customFileLang">select file for the programs</label>
+      <input type="file" id="customFileLang" class=" "
+             [(ngModel)]="programme"
+             (change)="uploadefiler($event)"
+             formControlName="programme"
+             [ngClass]="{'is-invalid': submitted && f.programme.errors }"
+             placeholder="programme">
+    </div>
+    <div class="text-danger text-center" *ngIf="submitted && f.programme.errors">
+      <div *ngIf="f.programme.errors.required">Programme is required</div>
     </div>
     <button class="btn btn-danger float-left mt-4 submit" [routerLink]="['/home','list-referentiels']" >Annuler</button>
     <button type="submit" class="btn btn-info mt-4  float-right submit">Soumettre</button>

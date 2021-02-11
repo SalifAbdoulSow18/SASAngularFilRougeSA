@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../../../services/users.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
-// @ts-ignore
-import pdfMake from 'pdfmake/build/pdfmake';
-// @ts-ignore
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-list-users',
@@ -15,6 +10,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class ListUsersComponent implements OnInit {
   p: number | undefined;
+  search = '' ;
   users: any;
 
   constructor(private userService: UsersService, private router: Router) {
@@ -25,6 +21,16 @@ export class ListUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // refresh table
+    this.userService.refresNeeded$.subscribe(() => {
+      // tslint:disable-next-line:no-unused-expression
+      this.userService.getUsers().subscribe(data => {
+        this.users = data ;
+      }) ;
+    });
+    this.userService.getUsers().subscribe(data => {
+      this.users = data ;
+    }) ;
   }
 
   /*transformPhoto(image: string): any {
@@ -56,11 +62,5 @@ export class ListUsersComponent implements OnInit {
         );
       }
     });
-  }
-
-  // tslint:disable-next-line:typedef
-  generatePdf() {
-    const documentDefinition = {content: 'A sample PDF document generated using Angular and PDFMake' };
-    pdfMake.createPdf(documentDefinition).open();
   }
 }

@@ -31,6 +31,8 @@ export class AuthentificationService {
 
           // stockage de token d'un users dans le localStorage!!!
           localStorage.setItem('token', response.token);
+          localStorage.setItem('id', tokenDecode.id);
+          localStorage.setItem('email', tokenDecode.email);
           localStorage.setItem('role', tokenDecode.roles);
           localStorage.setItem('archive', tokenDecode.status);
           // la redirection à partir des roles

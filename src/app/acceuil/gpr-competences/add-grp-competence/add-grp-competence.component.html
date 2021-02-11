@@ -29,6 +29,7 @@
       <ng-multiselect-dropdown
         name="competence" id="competence" class="col-8 float-right"
         formControlName="competence"
+        [ngClass]="{'is-invalid': submitted && f.competence.errors }"
         [placeholder]="'Choice your competence'"
         [(ngModel)]="selectedItems"
         [settings]="dropdownSettings"
@@ -37,6 +38,9 @@
         (onSelectAll)="onSelectAll($event)"
       >
       </ng-multiselect-dropdown>
+    </div>
+    <div class="text-danger text-center" *ngIf="submitted && f.competence.errors">
+      <div *ngIf="f.competence.errors.required">Competence is required</div>
     </div>
     <button class="btn btn-danger float-left mr-3 mt-4 submit" [routerLink]="['/home','list-grp-competences']" >Annuler</button>
     <button type="submit" class="btn btn-info mt-4  float-right submit">Soumettre</button>

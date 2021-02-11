@@ -63,8 +63,16 @@
       <div *ngIf="f.password.errors.required">password is required</div>
       <div *ngIf="f.password.errors.minlength">password n'est pas valide</div>
     </div>
+    <div class="col-lg-10 p-2">
+      <label>Password Confirme</label>
+      <input type="password" [(ngModel)]="passConfig" formControlName="passConfig" class="form-control" placeholder="comfirmer le password" [ngClass]="{'is-invalid': submitted && f.passConfig.errors }">
+    </div>
+    <div class="text-danger" *ngIf="submitted && f.passConfig.errors">
+      <div *ngIf="f.passConfig.errors.required">comfirmation password is required</div>
+      <div *ngIf="f.passConfig.errors.minlength">comfirmation password n'est pas valide</div>
+    </div>
     <div class="custom-file col-lg-10">
-      <input type="file" [(ngModel)]="photo" (change)="uploadefiler($event)" formControlName="photo"  id="customFileLang" [ngClass]="{'is-invalid': submitted && f.photo.errors }">
+      <input type="file" accept=".jpg, .png, .jpeg" [(ngModel)]="photo" (change)="uploadefiler($event)" formControlName="photo"  id="customFileLang" [ngClass]="{'is-invalid': submitted && f.photo.errors }">
       <label class="custom-file-label" for="customFileLang">Select file</label>
     </div>
     <div class="text-danger" *ngIf="submitted && f.photo.errors">
@@ -72,9 +80,13 @@
     </div>
   </div>
 
-  <div class="col-4 p-5 float-left">
-    <img src="./assets/images/SALogo.png" class="profile_image" alt="">
-    <h4 style="text-align: center">Koroboto</h4>
+  <div class="col-4 p-5 float-left" *ngIf="link">
+    <img  [src]="link" class="profile_image" alt="">
+    <h4 style="text-align: center">avatar</h4>
+  </div>
+  <div class="col-4 p-5 float-left" *ngIf="!link">
+    <img  src="assets/images/logsa.jpeg" class="profile_image" alt="">
+    <h4 style="text-align: center">avatar</h4>
   </div>
   <button class="btn btn-danger float-left mr-3 submit" [routerLink]="['/home','list-users']" >Annuler</button>
   <button type="submit" class="btn btn-info  float-right submit">Ajouter un User</button>

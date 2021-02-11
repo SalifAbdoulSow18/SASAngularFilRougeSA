@@ -26,6 +26,7 @@ import {CmComponent} from './cm/cm.component';
 import {VerificationGuard} from './verification.guard';
 import {DetailUserComponent} from './acceuil/users/detail-user/detail-user.component';
 import {DetailProfilComponent} from './acceuil/profils/detail-profil/detail-profil.component';
+import {ListUsersArchiveComponent} from './acceuil/users/list-users-archive/list-users-archive.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'cm', component: CmComponent },
   { path: 'home', component: AcceuilComponent, canActivate: [VerificationGuard], children: [
       { path: 'list-users', component: ListUsersComponent },
+      { path: 'list-user-archived', component: ListUsersArchiveComponent },
       { path: 'list-users/:id', component: DetailUserComponent },
       { path: 'add-user', component: AddUserComponent },
       { path: 'edit-user/:id', component: EditUserComponent },

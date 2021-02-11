@@ -40,10 +40,11 @@
           <span class="sr-only">(current)</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+          <a class="dropdown-item" [routerLink]="['/home','list-competences']">Competences</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-grp-competences']">Groupe Competences</a>
+          <a class="dropdown-item" [routerLink]="['/home','list-profilSortie']">Profil de Sortie</a>
           <a class="dropdown-item" [routerLink]="['/home','list-promos']">Promotions</a>
           <a class="dropdown-item" [routerLink]="['/home','list-referentiels']">References</a>
-          <a class="dropdown-item" [routerLink]="['/home','list-grp-competences']">Groupe Competences</a>
-          <a class="dropdown-item" [routerLink]="['/home','list-competences']">Competences</a>
         </div>
       </li>
       <li class="nav-item dropdown" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">
@@ -54,7 +55,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
           <a class="dropdown-item" [routerLink]="['/home','list-users']">Utilisateurs</a>
           <a class="dropdown-item" [routerLink]="['/home','list-profils']">Profils</a>
-          <a class="dropdown-item" [routerLink]="['/home','list-profilSortie']">Profil de Sortie</a>
         </div>
       </li>
       <li class="nav-item">
@@ -65,13 +65,37 @@
         </a>
       </li>
     </ul>
-    <div class="right_area">
-        <img src="./assets/images/SALogo.png" class="profile_image mr-3" alt="">
-        <h4 style="text-align: center">Koroboto</h4>
+    <span *ngIf="infoConnect.photo">
+      <img src="data:image/png;base64,{{infoConnect.photo}}" class="profile_image mr-3" alt="User Image">
+    </span>
+    <span *ngIf="!infoConnect.photo">
+      <img src="assets/images/SALogo.png" class="profile_image mr-3" alt="User Image">
+    </span>
+    <div class="right-area">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <button class="dropdown-toggle bg-warning  border-info" data-toggle="dropdown">
+            <h4 style="text-align: center">{{infoConnect.nom}} {{infoConnect.prenom}}</h4>
+            <h4 style="text-align: center">{{infoConnect.profil.libelle}}</h4>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <button class="btn btn-warning mb-2 w-100" [routerLink]="['/home','list-users', infoConnect.id]"><i class="fal fa-info-circle"></i>List your data</button>
+              <button class="btn btn-warning mb-2 w-100" [routerLink]="['/home','edit-user', infoConnect.id]"><i class="fa fa-edit"></i>Edit your data</button>
+              <button class="btn btn-warning mb-2 w-100" (click)="deconnexion()"><i class="fas fa-sign-out-alt"></i>Sign Out</button>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!--<div class="right_area">
+        <img src="data:image/png;base64,{{infoConnect.photo}}" class="profile_image mr-3" alt="">
+        <h4 style="text-align: center">{{infoConnect.nom}} {{infoConnect.prenom}}</h4>
     </div>
     <div>
+      <button class="btn btn-warning mb-5" [routerLink]="['/home','edit-user', infoConnect.id]">Update</button>
       <button class="btn btn-warning mb-5" (click)="deconnexion()">Déconnexion</button>
-    </div>
+    </div>-->
   </div>
 </nav>
 

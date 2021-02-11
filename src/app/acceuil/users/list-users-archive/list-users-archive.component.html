@@ -1,10 +1,9 @@
 <h1 class="text-center" xmlns:paginate="http://www.w3.org/1999/xhtml" xmlns:paginate="http://www.w3.org/1999/xhtml"
-    xmlns:itemsPerPage="http://www.w3.org/1999/xhtml" xmlns:currentPage="http://www.w3.org/1999/xhtml">La liste de mes utilisateurs</h1>
+    xmlns:itemsPerPage="http://www.w3.org/1999/xhtml" xmlns:currentPage="http://www.w3.org/1999/xhtml">La Liste de mes Utilisateurs Archivés</h1>
 <hr>
 <div class="row">
   <div class="col-sm m-auto">
     <input type="text" class="float-left" [(ngModel)]="search" placeholder="Recherchez ici">
-    <button class="btn btn-info float-right" [routerLink]="['/home','add-user']" type="submit" ><i class="fa fa-user-plus fa-2x">Créer</i></button>
     <table class="table table-info">
       <thead>
       <tr class="bg-dark text-center" style="color: white">
@@ -23,7 +22,7 @@
        <span *ngIf="user.photo">
             <img src="data:image/jpeg;base64,{{user.photo}}" alt="">
        </span>
-       <span *ngIf="!user.photo">
+          <span *ngIf="!user.photo">
             <img src="assets/images/programmer.png" alt="">
        </span>
         </th>
@@ -33,14 +32,12 @@
         <td>{{user.phone}}</td>
         <td>{{user.profil.libelle}}</td>
         <td>
-          <a class="btn btn-outline-info mr-2" [routerLink]="['/home','list-users',user.id]">Details</a>
-          <a class="btn btn-outline-warning mr-2" [routerLink]="['/home','edit-user',user.id]" >Edit</a>
-          <a  class="btn btn-outline-danger" (click)="removeUser(user.id)">Delete</a>
+          <a  class="btn btn-outline-warning">Désarchiver</a>
         </td>
       </tr>
       </tbody>
     </table>
-    <button class="btn btn-danger" [routerLink]="['/home','list-user-archived']">Users Archiver</button>
+    <button class="btn btn-info" [routerLink]="['/home','list-users']">retour aux users</button>
     <pagination-controls class="float-right" (pageChange)="p = $event">
 
     </pagination-controls>

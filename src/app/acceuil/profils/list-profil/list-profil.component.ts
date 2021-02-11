@@ -14,9 +14,20 @@ export class ListProfilComponent implements OnInit {
   bo = false;
   profils: any;
   // tslint:disable-next-line:no-shadowed-variable
-  constructor(private profilService: ProfilsService) { }
+  constructor(private profilService: ProfilsService) {
+    this.profilService.getProfil().subscribe(data => {
+      this.profils = data;
+      console.log(data);
+    }) ;
+  }
 
   ngOnInit(): void {
+    // refresh table
+    this.profilService.refresNeeded$.subscribe(() => {
+      this.profilService.getProfil().subscribe(data => {
+        this.profils = data;
+      }) ;
+    });
     this.profilService.getProfil().subscribe(data => {
       this.profils = data;
       console.log(data);
@@ -80,10 +91,23 @@ export class ListProfilComponent implements OnInit {
   // tslint:disable-next-line:typedef
   AjoutProfil(addProfil: NgForm) {
     // @ts-ignore
-    console.log((addProfil.value.libelle)) ;
+    // console.log((addProfil.value.libelle)) ;
     this.profilService.addProfil(addProfil.value.libelle).subscribe(reponse => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      });
       console.log(reponse);
-    });
+    }, error =>
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
+    );
   }
   // tslint:disable-next-line:typedef
   removeProfil(id: number){

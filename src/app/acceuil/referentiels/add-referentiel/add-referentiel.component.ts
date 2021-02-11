@@ -13,10 +13,11 @@ import {Router} from '@angular/router';
 })
 export class AddReferentielComponent implements OnInit {
 
-  gprCompetence = '' ;
+  groupeCompetences = '' ;
   libelle = '' ;
   presentation = '' ;
   programme = '' ;
+  selectedFile = '' ;
   critereEvaluation = '' ;
   critereAdmission = '' ;
   myForm: any = FormGroup ;
@@ -40,7 +41,7 @@ export class AddReferentielComponent implements OnInit {
       }
     );
     this.myForm = this.formBuilder.group({
-      gprCompetence: ['', [ Validators.required]],
+      /*groupeCompetences: ['', [ Validators.required]],*/
       libelle: ['', [ Validators.required]],
       presentation: ['', [ Validators.required]],
       programme: ['', [ Validators.required]],
@@ -62,7 +63,7 @@ export class AddReferentielComponent implements OnInit {
     return this.myForm.controls;
   }
   // tslint:disable-next-line:typedef
-  onSubmit() {
+  onSubmit1() {
     this.submitted = true;
     const formValue = this.myForm.value ;
     console.log(formValue);
@@ -87,6 +88,39 @@ export class AddReferentielComponent implements OnInit {
         setTimeout(() => {this.router.navigate(['/home', 'list-referentiels']); }, 3000);
         console.log('good');
       }, error => {
+        console.log(error);
+      }
+    );
+  }
+  uploadefiler(event: any): any {
+    this.selectedFile =  event.target.files[0];
+  }
+
+  onSubmit(): any {
+    this.submitted = true;
+    const formValue = this.myForm.value ;
+    console.log(formValue);
+    const formData = new FormData();
+    for ( const key of Object.keys(formValue) ) {
+      if (key !== 'programme'){
+        const value = formValue[key];
+        console.log(key, value);
+        formData.append(key, value);
+      }
+    }
+    console.log(this.selectedFile);
+    formData.append('programme', this.selectedFile);
+    this.referentielService.addReferentiel(formData).subscribe(reponse => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 2500
+        });
+        setTimeout(() => {this.router.navigate(['/home', 'list-referentiels']); }, 3000);
+        console.log(reponse);
+      }, (error) => {
         console.log(error);
       }
     );

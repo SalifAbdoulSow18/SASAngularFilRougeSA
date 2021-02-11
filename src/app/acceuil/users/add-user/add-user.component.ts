@@ -15,11 +15,13 @@ export class AddUserComponent implements OnInit {
   prenom = '';
   email = '';
   password = '';
+  passConfig = '' ;
   username = '' ;
   phone = '' ;
   address = '' ;
   type = '' ;
   photo = '' ;
+  link = '' ;
   selectedFile = '';
   myForm: any = FormGroup ;
   submitted = false;
@@ -38,34 +40,42 @@ export class AddUserComponent implements OnInit {
       photo: ['', [ Validators.required]],
       email: ['', [ Validators.required, Validators.email]],
       password: ['', [ Validators.required, Validators.minLength(6)]],
+      passConfig: ['', [ Validators.required, Validators.minLength(6)]],
     });
   }
   get f(): any {
     return this.myForm.controls;
   }
-
   uploadefiler(event: any): any {
     this.selectedFile =  event.target.files[0];
-  /*  if (event.target.files){
+    if (event.target.files){
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       // tslint:disable-next-line:no-shadowed-variable
       reader.onload = ( event: any) => {
         this.link = event.target.result;
       };
-    }*/
+    }
   }
   onSubmit(): any {
     this.submitted = true;
     const formValue = this.myForm.value ;
     console.log(formValue);
     const formData = new FormData();
-    for ( const key of Object.keys(formValue) ) {
-      if (key !== 'photo'){
-        const value = formValue[key];
-        console.log(key, value);
-        formData.append(key, value);
+    if (formValue.password === formValue.passConfig){
+      for ( const key of Object.keys(formValue) ) {
+        if (key !== 'photo'){
+          const value = formValue[key];
+          console.log(key, value);
+          formData.append(key, value);
+        }
       }
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'le mot de passe et la comfirmation mot de passe sont differents',
+      });
     }
     console.log(this.selectedFile);
     formData.append('photo', this.selectedFile);
@@ -77,10 +87,14 @@ export class AddUserComponent implements OnInit {
           showConfirmButton: false,
           timer: 2500
         });
-        setTimeout(() => {this.router.navigate(['/home', 'list-users']); }, 3000);
-        console.log(reponse);
+        setTimeout(() => {this.router.navigate(['/home', 'list-users', reponse.id]); }, 3000);
+        console.log(reponse.id);
     }, (error) => {
-        console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
       }
     );
     /*const formData = new FormData();

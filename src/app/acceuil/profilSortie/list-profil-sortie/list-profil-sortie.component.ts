@@ -22,6 +22,14 @@ export class ListProfilSortieComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.profilsortieService.refresNeeded$.subscribe(() => {
+      this.profilsortieService.getProfilSortie().subscribe(data => {
+        this.profilSorties = data ;
+      }) ;
+    });
+    this.profilsortieService.getProfilSortie().subscribe(data => {
+      this.profilSorties = data ;
+    }) ;
   }
 
   // tslint:disable-next-line:typedef
@@ -36,7 +44,13 @@ export class ListProfilSortieComponent implements OnInit {
         timer: 1500
       });
       console.log(reponse);
-    });
+    }, error =>
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
+    );
   }
   // tslint:disable-next-line:typedef
   removeProfilSortie(id: number){

@@ -8,6 +8,7 @@ import {ReferentielService} from '../../../services/referentiel.service';
   styleUrls: ['./list-referentiel.component.css']
 })
 export class ListReferentielComponent implements OnInit {
+  p: number | undefined;
   referentiels: any;
 
   constructor(private referentielService: ReferentielService) {

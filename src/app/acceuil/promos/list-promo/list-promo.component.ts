@@ -13,7 +13,7 @@ export class ListPromoComponent implements OnInit {
   constructor(private promoService: PromosService) {
     this.promoService.getPromo().subscribe(data => {
       this.promos = data ;
-      console.log(this.promos);
+      // console.log(this.promos);
     }) ;
   }
 

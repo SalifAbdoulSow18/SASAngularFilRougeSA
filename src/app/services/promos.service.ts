@@ -14,4 +14,7 @@ export class PromosService {
   getPromo(): Observable<any> {
     return this.httpClient.get( `${ this.baseUrl }/admin/promos`) ;
   }
+  addPromo(promo: any): Observable<any> {
+    return this.httpClient.post(`${ this.baseUrl }/admin/promos`, promo) ;
+  }
 }

@@ -20,6 +20,7 @@ export class EditUserComponent implements OnInit {
   phone = '' ;
   address = '' ;
   photo = '' ;
+  link = '' ;
   selectedFile = '';
   myForm: any = FormGroup ;
   submitted = false;
@@ -38,6 +39,8 @@ export class EditUserComponent implements OnInit {
             console.log(data);
             this.nom = data.nom ;
             this.prenom = data.prenom;
+            this.username = data.username ;
+            this.password = data.password;
             this.email = data.email;
             this.phone = data.phone ;
             this.photo = data.photo;
@@ -53,7 +56,6 @@ export class EditUserComponent implements OnInit {
       nom: ['', [ Validators.required]],
       phone: ['', [ Validators.required]],
       username: ['', [ Validators.required]],
-      address: ['', [ Validators.required]],
       photo: ['', [ Validators.required]],
       email: ['', [ Validators.required, Validators.email]],
       password: ['', [ Validators.required, Validators.minLength(6)]],
@@ -65,14 +67,14 @@ export class EditUserComponent implements OnInit {
 
   uploadefiler(event: any): any {
     this.selectedFile =  event.target.files[0];
-    /*  if (event.target.files){
+      if (event.target.files){
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         // tslint:disable-next-line:no-shadowed-variable
         reader.onload = ( event: any) => {
           this.link = event.target.result;
         };
-      }*/
+      }
   }
 
   onSubmit(): any {
@@ -91,20 +93,33 @@ export class EditUserComponent implements OnInit {
     console.log(this.selectedFile);
     formData.append('photo', this.selectedFile);
     formData.append('_method', 'PUT');
-    this.userService.editUser(formData, idp).subscribe(reponse => {
-      /*Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      setTimeout(() => {this.router.navigate(['/home', 'list-users']); }, 3000);*/
 
-      console.log(reponse);
-      }, (error) => {
-        console.log(error);
+
+    Swal.fire({
+      title: 'Do you want to save the changes?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: `Save`,
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.userService.editUser(formData, idp).subscribe(reponse => {
+            Swal.fire('Saved!', '', 'success');
+            setTimeout(() => {this.router.navigate(['/home', 'list-users', reponse.id]); }, 3000);
+            console.log(reponse);
+          }, (error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            });
+            console.log(error);
+          }
+        );
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
       }
-    );
+    });
   }
 }

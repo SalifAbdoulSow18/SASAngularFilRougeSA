@@ -59,13 +59,13 @@ export class AddGrpCompetenceComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     const formValue = this.myForm.value ;
-    console.log(formValue);
+    // console.log(formValue);
     const myGrpCompetence = {
       libelle: formValue.libelle,
       competence: formValue.competence,
       description : formValue.description,
     };
-    console.log(myGrpCompetence);
+    // console.log(myGrpCompetence);
     this.GrpCompetenceService.addGrpCompetence(myGrpCompetence).subscribe(
       data => {
         Swal.fire({

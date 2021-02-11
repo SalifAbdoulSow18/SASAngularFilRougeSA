@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,13 @@ import {Observable} from 'rxjs';
 export class CompetencesService {
 
   baseUrl = environment.api_url ;
+
+  // tslint:disable-next-line:variable-name
+  private _refresNeeded$ = new Subject<void>() ;
+
+  get refresNeeded$(): any {
+    return this._refresNeeded$ ;
+  }
   constructor(private httpClient: HttpClient) {}
 
   addCompetence(competences: any): Observable<any> {
@@ -18,7 +26,11 @@ export class CompetencesService {
     return this.httpClient.get( `${ this.baseUrl }/admin/competences?status=1`) ;
   }
   deleteCompetence(id: number): Observable<any> {
-    return this.httpClient.delete( `${ this.baseUrl }/admin/competences/` + id) ;
+    return this.httpClient.delete( `${ this.baseUrl }/admin/competences/` + id).pipe(
+      tap(() => {
+        this._refresNeeded$.next() ;
+      })
+    );
   }
   editCompetence(competences: any, id: number): Observable<any> {
     return this.httpClient.put(`${ this.baseUrl }/admin/competences/` + id, competences) ;

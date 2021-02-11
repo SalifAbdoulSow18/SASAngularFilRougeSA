@@ -27,6 +27,16 @@ export class ListCompetenceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.CompetenceService.refresNeeded$.subscribe(() => {
+      this.CompetenceService.getCompetences().subscribe(data => {
+        this.Competences = data ;
+        console.log(this.Competences);
+      }) ;
+    });
+    this.CompetenceService.getCompetences().subscribe(data => {
+      this.Competences = data ;
+      console.log(this.Competences);
+    }) ;
   }
 
   // tslint:disable-next-line:typedef
