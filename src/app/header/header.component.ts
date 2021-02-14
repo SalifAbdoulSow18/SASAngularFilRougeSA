@@ -24,6 +24,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  // Pour l'affichage des images
+  transformPhoto(image: string): any {
+    if (image === null) {
+      return '../../../assets/images/SALogo.png' ;
+    }else {
+      return 'data:image/jpg;base64,' + image ;
+    }
+  }
 
   // tslint:disable-next-line:typedef
   deconnexion() {

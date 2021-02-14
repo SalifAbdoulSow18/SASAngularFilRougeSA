@@ -67,7 +67,7 @@ export class AuthentificationService {
       ) ;
   }
   // tslint:disable-next-line:typedef
-    getToken(key: string) {
+    getToken(key: any) {
       const token = localStorage.getItem('token');
       if (token !== 'undifined') {
         return token;

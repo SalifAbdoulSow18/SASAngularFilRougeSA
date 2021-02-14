@@ -19,6 +19,14 @@ export class ListReferentielComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.referentielService.refresNeeded$.subscribe(() => {
+      this.referentielService.getReferentiels().subscribe(data => {
+        this.referentiels = data ;
+      }) ;
+    });
+    this.referentielService.getReferentiels().subscribe(data => {
+      this.referentiels = data ;
+    }) ;
   }
 
 }

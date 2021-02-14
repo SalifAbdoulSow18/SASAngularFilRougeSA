@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,12 @@ import {Observable} from 'rxjs';
 export class ReferentielService {
 
   baseUrl = environment.api_url ;
+  // tslint:disable-next-line:variable-name
+  private _refresNeeded$ = new Subject<void>() ;
+
+  get refresNeeded$(): any {
+    return this._refresNeeded$ ;
+  }
   constructor(private httpClient: HttpClient) {}
 
   // tslint:disable-next-line:typedef
@@ -26,6 +33,10 @@ export class ReferentielService {
     return this.httpClient.put(`${ this.baseUrl }/admin/referentiels/` + id, referentiel) ;
   }
   deleteReferentiel(id: number): Observable<any> {
-    return this.httpClient.delete( `${ this.baseUrl }/admin/referentiels/` + id) ;
+    return this.httpClient.delete( `${ this.baseUrl }/admin/referentiels/` + id).pipe(
+      tap(() => {
+        this._refresNeeded$.next() ;
+      })
+    );
   }
 }

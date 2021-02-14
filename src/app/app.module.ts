@@ -40,6 +40,10 @@ import {QRCodeModule} from 'angular2-qrcode';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ListUsersArchiveComponent } from './acceuil/users/list-users-archive/list-users-archive.component';
+import { SummarizePipe } from './pipes/summarize.pipe';
+import { DetailGrpCompetenceComponent } from './acceuil/gpr-competences/detail-grp-competence/detail-grp-competence.component';
+import { DetailReferentielComponent } from './acceuil/referentiels/detail-referentiel/detail-referentiel.component';
+import { DetailPromoComponent } from './acceuil/promos/detail-promo/detail-promo.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,10 @@ import { ListUsersArchiveComponent } from './acceuil/users/list-users-archive/li
     DetailProfilComponent,
     FilterPipe,
     ListUsersArchiveComponent,
+    SummarizePipe,
+    DetailGrpCompetenceComponent,
+    DetailReferentielComponent,
+    DetailPromoComponent,
   ],
     imports: [
         BrowserModule,

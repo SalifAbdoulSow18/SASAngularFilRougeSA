@@ -14,7 +14,7 @@ import {ListItem} from 'ng-multiselect-dropdown/multiselect.model';
 export class EditReferentielComponent implements OnInit {
 
   idEdit: any ;
-  gprCompetence = '' ;
+  groupeCompetence = '' ;
   libelle = '' ;
   presentation = '' ;
   programme = '' ;
@@ -22,6 +22,8 @@ export class EditReferentielComponent implements OnInit {
   critereAdmission = '' ;
   myForm: any = FormGroup ;
   submitted = false;
+  groupeCompetences = '';
+  selectedFile = '' ;
   // tslint:disable-next-line:ban-types
   dropdownList: any;
   selectedItems = [];
@@ -62,7 +64,7 @@ export class EditReferentielComponent implements OnInit {
       }
     );
     this.myForm = this.formBuilder.group({
-      gprCompetence: ['', [ Validators.required]],
+      groupeCompetence: ['', [ Validators.required]],
       libelle: ['', [ Validators.required]],
       presentation: ['', [ Validators.required]],
       programme: ['', [ Validators.required]],
@@ -84,7 +86,7 @@ export class EditReferentielComponent implements OnInit {
     return this.myForm.controls;
   }
   // tslint:disable-next-line:typedef
-  onSubmit() {
+ /* onSubmit() {
     this.submitted = true;
     const formValue = this.myForm.value ;
     console.log(formValue);
@@ -109,6 +111,46 @@ export class EditReferentielComponent implements OnInit {
         setTimeout(() => {this.router.navigate(['/home', 'list-referentiels']); }, 3000);
         console.log('good');
       }, error => {
+        console.log(error);
+      }
+    );
+  }*/
+  uploadefiler(event: any): any {
+    this.selectedFile =  event.target.files[0];
+  }
+  onSubmit(): any {
+    this.submitted = true;
+    const formValue = this.myForm.value ;
+    console.log(formValue);
+    const formData = new FormData();
+    for ( const key of Object.keys(formValue) ) {
+      if (key !== 'programme' && key !== 'groupeCompetence'){
+        const value = formValue[key];
+        // console.log(key, value);
+        formData.append(key, value);
+      }
+    }
+    for (const groupC of formValue.groupeCompetence) {
+      this.groupeCompetences += groupC.id + ',';
+    }
+    console.log(this.groupeCompetences);
+    // console.log(this.selectedFile);
+
+    formData.append('groupeCompetence', this.groupeCompetences);
+    if (this.selectedFile !== '') {
+      formData.append('programme', this.selectedFile);
+    }
+    this.referentielService.editReferentiel(formData, this.idEdit).subscribe(reponse => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 2500
+        });
+        setTimeout(() => {this.router.navigate(['/home', 'list-referentiels']); }, 3000);
+        console.log(reponse);
+      }, (error) => {
         console.log(error);
       }
     );

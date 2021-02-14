@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class AddReferentielComponent implements OnInit {
 
-  groupeCompetences = '' ;
+  groupeCompetence = '' ;
   libelle = '' ;
   presentation = '' ;
   programme = '' ;
@@ -22,6 +22,7 @@ export class AddReferentielComponent implements OnInit {
   critereAdmission = '' ;
   myForm: any = FormGroup ;
   submitted = false;
+  groupeCompetences = '';
   // tslint:disable-next-line:ban-types
   dropdownList: any;
   selectedItems = [];
@@ -41,7 +42,7 @@ export class AddReferentielComponent implements OnInit {
       }
     );
     this.myForm = this.formBuilder.group({
-      /*groupeCompetences: ['', [ Validators.required]],*/
+      groupeCompetence: ['', [ Validators.required]],
       libelle: ['', [ Validators.required]],
       presentation: ['', [ Validators.required]],
       programme: ['', [ Validators.required]],
@@ -63,7 +64,7 @@ export class AddReferentielComponent implements OnInit {
     return this.myForm.controls;
   }
   // tslint:disable-next-line:typedef
-  onSubmit1() {
+  /*onSubmit1() {
     this.submitted = true;
     const formValue = this.myForm.value ;
     console.log(formValue);
@@ -91,7 +92,7 @@ export class AddReferentielComponent implements OnInit {
         console.log(error);
       }
     );
-  }
+  }*/
   uploadefiler(event: any): any {
     this.selectedFile =  event.target.files[0];
   }
@@ -99,16 +100,22 @@ export class AddReferentielComponent implements OnInit {
   onSubmit(): any {
     this.submitted = true;
     const formValue = this.myForm.value ;
-    console.log(formValue);
+    // console.log(formValue);
     const formData = new FormData();
     for ( const key of Object.keys(formValue) ) {
-      if (key !== 'programme'){
+      if (key !== 'programme' && key !== 'groupeCompetence'){
         const value = formValue[key];
-        console.log(key, value);
+        // console.log(key, value);
         formData.append(key, value);
       }
     }
-    console.log(this.selectedFile);
+    for (const groupC of formValue.groupeCompetence) {
+      this.groupeCompetences += groupC.id + ',';
+    }
+    console.log(this.groupeCompetences);
+    // console.log(this.selectedFile);
+
+    formData.append('groupeCompetence', this.groupeCompetences);
     formData.append('programme', this.selectedFile);
     this.referentielService.addReferentiel(formData).subscribe(reponse => {
         Swal.fire({

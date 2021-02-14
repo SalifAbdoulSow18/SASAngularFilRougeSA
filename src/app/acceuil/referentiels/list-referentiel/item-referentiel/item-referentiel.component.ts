@@ -46,7 +46,7 @@ export class ItemReferentielComponent implements OnInit {
     b64Data = b64Data.replace(/\s/g, '');
     const byteCharacters = window.atob(b64Data);
     const byteArrays = [];
-    for (let offset = 0; offset < byteCharacters.length; offset+= sliceSize) {
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
       const slice = byteCharacters.slice(offset, offset + sliceSize);
 
       const byteNumbers = new Array(slice.length);

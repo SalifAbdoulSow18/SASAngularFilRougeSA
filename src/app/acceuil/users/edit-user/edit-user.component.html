@@ -52,11 +52,8 @@
       <div *ngIf="f.password.errors.minlength">password n'est pas valide</div>
     </div>
     <div class="custom-file col-lg-10">
-      <input type="file" accept=".jpg, .png, .jpeg" [(ngModel)]="photo" (change)="uploadefiler($event)" formControlName="photo"  id="customFileLang" [ngClass]="{'is-invalid': submitted && f.photo.errors }">
+      <input type="file" accept=".jpg, .png, .jpeg" [(ngModel)]="photo" (change)="uploadefiler($event)" formControlName="photo"  id="customFileLang">
       <label class="custom-file-label" for="customFileLang">Select file</label>
-    </div>
-    <div class="text-danger" *ngIf="submitted && f.photo.errors">
-      <div *ngIf="f.photo.errors.required">File is required</div>
     </div>
   </div>
 

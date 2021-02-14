@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ReferentielService} from '../../../services/referentiel.service';
 import {GrpComprtenceService} from '../../../services/grp-comprtence.service';
 
 @Component({
@@ -19,6 +18,16 @@ export class ListGrpCompetenceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.grpCompetenceService.refresNeeded$.subscribe(() => {
+      this.grpCompetenceService.getGrpCompetences().subscribe(data => {
+        this.grpCompetences = data ;
+        console.log(this.grpCompetences);
+      }) ;
+    });
+    this.grpCompetenceService.getGrpCompetences().subscribe(data => {
+      this.grpCompetences = data ;
+      console.log(this.grpCompetences);
+    }) ;
   }
 
 }

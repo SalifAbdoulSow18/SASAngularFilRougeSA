@@ -27,8 +27,8 @@
     <div class="row m-3">
       <label class="col-3 float-left">Groupes Competences</label>
       <ng-multiselect-dropdown
-        name="gprCompetence" id="gprCompetence" class="col-8 float-right"
-        formControlName="gprCompetence"
+        name="groupeCompetence" id="groupeCompetence" class="col-8 float-right"
+        formControlName="groupeCompetence"
         [placeholder]="'Aucun groupe de competence'"
         [(ngModel)]="selectedItems"
         [settings]="dropdownSettings"
@@ -38,13 +38,14 @@
       >
       </ng-multiselect-dropdown>
     </div>
-    <div class="text-danger text-center" *ngIf="submitted && f.competence.errors">
-      <div *ngIf="f.competence.errors.required">Competence is required</div>
+    <div class="text-danger text-center" *ngIf="submitted && f.groupeCompetence.errors">
+      <div *ngIf="f.groupeCompetence.errors.required">Competence is required</div>
     </div>
-    <div class="row m-3">
-      <label class="col-3 float-left">Programme</label>
-      <input type="text" class="form-control col-8 float-right"
+    <div class="row m-3 custom-file">
+      <label class="custom-file-label col-lg-11 float-right" for="customFileLang">select file for the programs</label>
+      <input type="file" id="customFileLang" class=" "
              [(ngModel)]="programme"
+             (change)="uploadefiler($event)"
              formControlName="programme"
              [ngClass]="{'is-invalid': submitted && f.programme.errors }"
              placeholder="programme">

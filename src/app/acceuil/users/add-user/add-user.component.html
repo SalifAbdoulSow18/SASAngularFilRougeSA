@@ -55,7 +55,7 @@
       <div *ngIf="f.email.errors.required">email is required</div>
       <div *ngIf="f.email.errors.email">email n'est pas valide</div>
     </div>
-    <div class="col-lg-10 p-2">
+    <div class="col-lg-10 p-2 w-100">
       <label>Password</label>
       <input type="password" [(ngModel)]="password" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{'is-invalid': submitted && f.password.errors }">
     </div>

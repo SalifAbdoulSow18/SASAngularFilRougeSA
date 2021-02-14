@@ -29,4 +29,12 @@ export class DetailUserComponent implements OnInit {
       `;
   });
   }
+
+  transformPhoto(image: string): any {
+    if (image === null) {
+      return '../../../assets/images/SALogo.png' ;
+    }else {
+      return 'data:image/jpg;base64,' + image ;
+    }
+  }
 }

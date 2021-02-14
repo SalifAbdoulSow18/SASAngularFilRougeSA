@@ -2,7 +2,7 @@
 <hr>
 <div class="row">
   <div class="col-sm-10 m-auto">
-    <button class="btn btn-info float-right" [routerLink]="['/home','add-promo']" type="submit" ><i class="fa fa-user-plus fa-3x">Créer</i></button>
+    <button class="btn btn-info float-right mb-2" [routerLink]="['/home','add-promo']" type="submit" ><i class="fa fa-user-plus">Créer</i></button>
     <table class="table table-info">
       <thead>
       <tr class="bg-dark text-center" style="color: white">
@@ -20,8 +20,8 @@
         <td>{{promo.dateFin}}</td>
         <td>{{promo.annee}}</td>
         <td>
-          <a class="btn btn-outline-info mr-2">Details</a>
-          <a class="btn btn-outline-warning mr-2" [routerLink]="['/home','edit-profil']">Edit</a>
+          <a class="btn btn-outline-info mr-2" [routerLink]="['/home','list-promos', promo.id]">Details</a>
+          <a class="btn btn-outline-warning mr-2" [routerLink]="['/home','edit-promo', promo.id]">Edit</a>
           <a  class="btn btn-outline-danger mt-2">Delete</a>
         </td>
       </tr>

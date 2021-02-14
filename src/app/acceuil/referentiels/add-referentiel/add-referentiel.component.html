@@ -24,11 +24,11 @@
     <div class="text-danger text-center" *ngIf="submitted && f.presentation.errors">
       <div *ngIf="f.presentation.errors.required">Presentation is required</div>
     </div>
-   <!-- <div class="row m-3">
+    <div class="row m-3">
       <label class="col-3 float-left">Groupes Competences</label>
       <ng-multiselect-dropdown
-        name="groupeCompetences" id="groupeCompetences" class="col-8 float-right"
-        formControlName="groupeCompetences"
+        name="groupeCompetence" id="groupeCompetence" class="col-8 float-right"
+        formControlName="groupeCompetence"
         [placeholder]="'select groupes competences'"
         [(ngModel)]="selectedItems"
         [settings]="dropdownSettings"
@@ -38,9 +38,9 @@
       >
       </ng-multiselect-dropdown>
     </div>
-    <div class="text-danger text-center" *ngIf="submitted && f.groupeCompetences.errors">
-      <div *ngIf="f.groupeCompetences.errors.required">Groupe Competence is required</div>
-    </div>-->
+    <div class="text-danger text-center" *ngIf="submitted && f.groupeCompetence.errors">
+      <div *ngIf="f.groupeCompetence.errors.required">Groupe Competence is required</div>
+    </div>
     <div class="row m-3">
       <label class="col-3 float-left">Critères d'évaluation</label>
       <textarea class="col-8 float-right" [(ngModel)]="critereEvaluation"

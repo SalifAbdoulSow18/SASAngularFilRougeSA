@@ -27,14 +27,18 @@ import {VerificationGuard} from './verification.guard';
 import {DetailUserComponent} from './acceuil/users/detail-user/detail-user.component';
 import {DetailProfilComponent} from './acceuil/profils/detail-profil/detail-profil.component';
 import {ListUsersArchiveComponent} from './acceuil/users/list-users-archive/list-users-archive.component';
+import {DetailGrpCompetenceComponent} from './acceuil/gpr-competences/detail-grp-competence/detail-grp-competence.component';
+import {TokenGuard} from './token.guard';
+import {DetailReferentielComponent} from './acceuil/referentiels/detail-referentiel/detail-referentiel.component';
+import {DetailPromoComponent} from './acceuil/promos/detail-promo/detail-promo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
-  { path: 'formateur', component: FormateurComponent },
-  { path: 'apprenant', component: ApprenantComponent },
-  { path: 'cm', component: CmComponent },
-  { path: 'home', component: AcceuilComponent, canActivate: [VerificationGuard], children: [
+  { path: 'formateur', component: FormateurComponent, canActivate: [VerificationGuard, TokenGuard] },
+  { path: 'apprenant', component: ApprenantComponent, canActivate: [VerificationGuard, TokenGuard] },
+  { path: 'cm', component: CmComponent, canActivate: [VerificationGuard, TokenGuard] },
+  { path: 'home', component: AcceuilComponent, canActivate: [VerificationGuard, TokenGuard], children: [
       { path: 'list-users', component: ListUsersComponent },
       { path: 'list-user-archived', component: ListUsersArchiveComponent },
       { path: 'list-users/:id', component: DetailUserComponent },
@@ -44,15 +48,18 @@ const routes: Routes = [
       { path: 'list-profils/:id', component: DetailProfilComponent },
       { path: 'list-profilSortie', component: ListProfilSortieComponent },
       { path: 'list-promos', component: ListPromoComponent },
+      { path: 'list-promos/:id', component: DetailPromoComponent },
       { path: 'add-promo', component: AddPromoComponent },
-      { path: 'edit-promo', component: EditPromoComponent },
+      { path: 'edit-promo/:id', component: EditPromoComponent },
       { path: 'list-referentiels', component: ListReferentielComponent },
+      { path: 'list-referentiels/:id', component: DetailReferentielComponent },
       { path: 'add-referentiel', component: AddReferentielComponent },
       { path: 'edit-referentiel/:id', component: EditReferentielComponent },
       { path: 'list-competences', component: ListCompetenceComponent },
       { path: 'add-competence', component: AddCompetenceComponent },
       { path: 'edit-competence/:id', component: EditCompetenceComponent },
       { path: 'list-grp-competences', component: ListGrpCompetenceComponent },
+      { path: 'list-grp-competences/:id', component: DetailGrpCompetenceComponent },
       { path: 'add-grp-competence', component: AddGrpCompetenceComponent },
       { path: 'edit-grp-competence/:id', component: EditGrpCompetenceComponent },
     ]

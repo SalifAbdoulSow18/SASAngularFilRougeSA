@@ -56,7 +56,6 @@ export class EditUserComponent implements OnInit {
       nom: ['', [ Validators.required]],
       phone: ['', [ Validators.required]],
       username: ['', [ Validators.required]],
-      photo: ['', [ Validators.required]],
       email: ['', [ Validators.required, Validators.email]],
       password: ['', [ Validators.required, Validators.minLength(6)]],
     });
@@ -67,7 +66,7 @@ export class EditUserComponent implements OnInit {
 
   uploadefiler(event: any): any {
     this.selectedFile =  event.target.files[0];
-      if (event.target.files){
+    if (event.target.files){
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         // tslint:disable-next-line:no-shadowed-variable
@@ -90,8 +89,10 @@ export class EditUserComponent implements OnInit {
         formData.append(key, value);
       }
     }
-    console.log(this.selectedFile);
-    formData.append('photo', this.selectedFile);
+    // console.log(this.selectedFile);
+    if (this.selectedFile !== '') {
+      formData.append('photo', this.selectedFile);
+    }
     formData.append('_method', 'PUT');
 
 
@@ -118,7 +119,7 @@ export class EditUserComponent implements OnInit {
           }
         );
       } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
+        Swal.fire('Changes are not saved', '', 'info');
       }
     });
   }

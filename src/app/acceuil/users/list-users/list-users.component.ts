@@ -33,13 +33,13 @@ export class ListUsersComponent implements OnInit {
     }) ;
   }
 
-  /*transformPhoto(image: string): any {
+  transformPhoto(image: string): any {
     if (image === null) {
       return '../../../assets/images/SALogo.png' ;
     }else {
       return 'data:image/jpg;base64,' + image ;
     }
-  }*/
+  }
   removeUser(id: number): any {
 
     Swal.fire({
