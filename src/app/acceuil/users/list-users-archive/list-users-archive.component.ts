@@ -50,15 +50,15 @@ export class ListUsersArchiveComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, archive it!'
+      confirmButtonText: 'Yes, dearchive it!'
     }).then((result) => {
       if (result.isConfirmed) {
         this.userService.deleteUser(id).subscribe(reponse => {
           console.log(reponse);
         });
         Swal.fire(
-          'Archive!',
-          'Your file has been Archived.',
+          'Unarchive!',
+          'Your file has been Dearchived.',
           'success'
         );
       }
