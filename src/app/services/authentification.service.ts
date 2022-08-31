@@ -14,7 +14,7 @@ export class AuthentificationService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  // tslint:disable-next-line:new-parens
+  // tslint:dAvec un service, nous pouvons créer une méthode et l’appeler au niveau du ts isable-next-line:new-parens
   helpers = new JwtHelperService;
   baseUrl = environment.api_url;
 

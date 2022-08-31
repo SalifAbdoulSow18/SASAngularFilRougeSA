@@ -107,8 +107,8 @@ export class EditUserComponent implements OnInit {
       if (result.isConfirmed) {
         this.userService.editUser(formData, idp).subscribe(reponse => {
             Swal.fire('Saved!', '', 'success');
-            setTimeout(() => {this.router.navigate(['/home', 'list-users', reponse.id]); }, 3000);
-            console.log(reponse);
+            setTimeout(() => {this.router.navigate(['/home', 'list-users', idp]); }, 3000);
+            console.log('good');
           }, (error) => {
             Swal.fire({
               icon: 'error',

@@ -148,7 +148,7 @@ export class EditReferentielComponent implements OnInit {
           showConfirmButton: false,
           timer: 2500
         });
-        setTimeout(() => {this.router.navigate(['/home', 'list-referentiels']); }, 3000);
+        setTimeout(() => {this.router.navigate(['/home', 'list-referentiels', this.idEdit]); }, 3000);
         console.log(reponse);
       }, (error) => {
         console.log(error);
